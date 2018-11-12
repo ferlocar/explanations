@@ -107,38 +107,3 @@ class Explainer(object):
                 n = len(combinations)
             i += 1
         return explanation
-
-    def prune_explanation2(self, obs, explanation, def_values):
-        # Get number of explanation subsets (excluding all variables and no variables)
-        n = 2 ** len(explanation)
-        combinations = range(1, n-1)
-        # Remove powers of 2 (i.e., single feature combination)
-        combinations = filter(lambda x: (x & (x - 1)) > 0, combinations)
-        n = len(combinations)
-        # Order by number of bits (i.e., try larger combinations first)
-        combinations = sorted(combinations, key=lambda x: bin(x).count("1"), reverse=True)
-        shortest_e = explanation
-        t_obs = np.matrix(obs, copy=True)
-        i = 0
-        score = self.score_f(obs)[0, 1] - self.threshold
-        class_val = 1 if score >= 0 else -1
-        bits = 1 << np.arange(len(explanation))
-        while i < n:
-            c = combinations[i]
-            # Set features according to combination and predict
-            e_bits = ((c & bits) > 0).astype(int)
-            t_obs[:, explanation] = np.multiply(1 - e_bits, obs[:, explanation]) + \
-                                    np.multiply(e_bits, def_values[explanation])
-            score = (self.score_f(t_obs) - self.threshold)[0, 1] * class_val
-            if score < 0:
-                # We have a shorter explanation
-                shortest_e = []
-                for f in explanation:
-                    if t_obs[0, f] == def_values[f]:
-                        shortest_e.append(f)
-                # Keep only subsets of the combination that was found
-                combinations = filter(lambda x: (x | c) <= c, combinations)
-                i = 0
-                n = len(combinations)
-            i += 1
-        return shortest_e
