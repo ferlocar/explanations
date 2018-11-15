@@ -82,7 +82,7 @@ class Explainer(object):
         n = 2 ** explanation.sum()
         combinations = range(1, n-1)
         # Remove powers of 2 (i.e., single feature combinations)
-        combinations = filter(lambda x: (x & (x - 1)) > 0, combinations)
+        combinations = [x for x in combinations if (x & (x - 1)) > 0]
         n = len(combinations)
         # Order by number of bits (i.e., try larger combinations first)
         combinations = sorted(combinations, key=lambda x: bin(x).count("1"), reverse=True)
@@ -102,7 +102,7 @@ class Explainer(object):
                 # We have a shorter explanation
                 explanation = np.in1d(active_f, relevant_f[e_bits == 1])
                 # Keep only subsets of the combination that was found
-                combinations = filter(lambda x: (x | c) <= c, combinations)
+                combinations = [x for x in combinations if (x | c) <= c]
                 i = 0
                 n = len(combinations)
             i += 1
