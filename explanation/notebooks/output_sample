@@ -1,0 +1,38 @@
+1,Grade only logistic l2::search_on_edge,False
+1,Grade only logistic l2::score_variation,0.0
+1,Grade only logistic l2::all_cv_scores,[0.796]
+1,Grade only logistic l2::roc_auc,0.6840185572000252
+1,Interest rate only logistics l2::search_on_edge,False
+1,Interest rate only logistics l2::score_variation,0.0
+1,Interest rate only logistics l2::all_cv_scores,[0.79613333]
+1,Interest rate only logistics l2::roc_auc,0.6851063693533206
+1,Gaussian Naive Bayes::search_on_edge,False
+1,Gaussian Naive Bayes::score_variation,0.0
+1,Gaussian Naive Bayes::all_cv_scores,[0.4205]
+1,Gaussian Naive Bayes::roc_auc,0.6434579015965021
+1,l1 Penalized Logistic Regression::search_on_edge,False
+1,l1 Penalized Logistic Regression::score_variation,0.03333194450232261
+1,l1 Penalized Logistic Regression::all_cv_scores,[0.79986667 0.80003333 0.79993333 0.79986667 0.7999     0.79976667
+ 0.79986667 0.7999     0.7999     0.79986667]
+1,l1 Penalized Logistic Regression::roc_auc,0.6853415292427707
+1,l2 Penalized Logistic Regression::search_on_edge,False
+1,l2 Penalized Logistic Regression::score_variation,0.25825800808097565
+1,l2 Penalized Logistic Regression::all_cv_scores,[0.7982     0.7982     0.79816667 0.7992     0.79943333 0.80023333
+ 0.80013333 0.8        0.79993333 0.79993333]
+1,l2 Penalized Logistic Regression::roc_auc,0.6811958990053769
+1,Decision tree::search_on_edge,False
+1,Decision tree::score_variation,0.3006765221749021
+1,Decision tree::all_cv_scores,[0.79696667 0.79696667 0.7962     0.7958     0.7958     0.79666667
+ 0.79613333 0.7982     0.7982    ]
+1,Decision tree::roc_auc,0.6630750794540842
+1,Random forest::search_on_edge,True
+1,Random forest::score_variation,0.3579455589777624
+1,Random forest::all_cv_scores,[0.798      0.79946667 0.7999     0.79996667 0.79946667 0.79936667
+ 0.80016667 0.7999     0.79983333 0.7999     0.7999     0.79986667
+ 0.80036667 0.8001     0.80046667 0.8006     0.80043333 0.80036667
+ 0.8002     0.80003333 0.80086667 0.8        0.80023333 0.80016667
+ 0.80003333 0.79956667 0.79936667 0.79983333 0.79983333 0.79963333
+ 0.79963333 0.79986667 0.7999     0.79976667 0.7997     0.79966667
+ 0.79923333 0.7996     0.79966667 0.79946667 0.79866667 0.79866667
+ 0.79823333 0.79816667 0.7984    ]
+1,Random forest::roc_auc,0.679238165980383
