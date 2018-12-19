@@ -58,7 +58,8 @@ def main():
     data = data[:top_obs, :]
     labels = labels[:top_obs]
     explainer = Explainer(model.predict_proba, 0.5)
-    explanations = explainer.explain(data)
+    col_types = np.array(["cat"]*data.shape[1])
+    explanations = explainer.explain(data, col_types)
     scores = model.predict_proba(data)[:, 1]
     export_explanations(explanations, labels, scores, features)
 

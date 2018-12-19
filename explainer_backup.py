@@ -1,5 +1,4 @@
 import numpy as np
-from scipy import stats
 import bisect
 
 
@@ -14,39 +13,22 @@ class Explainer(object):
         # Whether we want to omit explanations from default decisions
         self.omit_default = omit_default
 
-    def explain(self, data, col_types, cat_groups=None, max_ite=20):
+    def explain(self, data, max_ite=20, operator="set_zero"):
         all_explanations = []
         # Get default values
-        def_values = np.empty(data.shape[1])
-        cont_ixs = col_types == "cont"
-        cat_ixs = col_types == "cat"
-        if any(cont_ixs):
-            def_values[cont_ixs] = np.squeeze(np.asarray(np.average(data[:, cont_ixs], axis=0)))
-        def_values[cat_ixs] = np.squeeze(stats.mode(data[:, cat_ixs])[0])
-        # Add categorical variable defaults
-        cat_defaults = {}
-        modes = []
-        if cat_groups is None:
-            cat_groups = []
-        for cat_group in cat_groups:
-            max_ix = data[:, np.array(cat_group)].sum(axis=0).argmax()
-            modes.append(cat_group[max_ix])
-            for f in cat_group:
-                cat_defaults[f] = modes[-1]
-        modes = np.array(modes)
+        if operator == "set_zero":
+            def_values = np.zeros(data.shape[1])
+        elif operator == "set_average":
+            def_values = np.squeeze(np.asarray(np.average(data, axis=0)))
+        else:
+            raise ValueError('Unsupported operator: {0}.'.format(operator))
         for obs in data:
             obs = obs.reshape(1, -1)
             score = self.score_f(obs)[0, 1] - self.threshold
             # Get class of the observation
             class_val = 1 if score >= 0 else -1
             # Get relevant features to apply operators
-            relevant_f = np.where(obs != def_values)[1]
-            # Remove variables that are the "mode" of some categorical group
-            relevant_f = relevant_f[np.in1d(relevant_f, modes, invert=True)]
-            # Keep track of all the relevant categorical columns
-            relevant_cat_f = np.in1d(relevant_f, cat_defaults.keys())
-            # Keep track of all the modes of the relevant categorical columns
-            cat_mode_f = np.array([cat_defaults[f] for f in relevant_f[relevant_cat_f]], dtype=int)
+            relevant_f = np.nonzero(obs)[1]
             # Set lists of explanations
             explanations = np.zeros((0, relevant_f.size))
             e_list = []
@@ -65,7 +47,7 @@ class Explainer(object):
                     # Add to list of explanations if the class changed
                     if score < 0:
                         if self.prune:
-                            comb = self.prune_explanation(obs, comb, def_values, relevant_f, cat_defaults)
+                            comb = self.prune_explanation(obs, comb, def_values, relevant_f)
                         explanations = np.vstack((explanations, comb))
                         e_list.append(relevant_f[comb == 1].tolist())
 
@@ -86,8 +68,6 @@ class Explainer(object):
                         def_value_tiles = np.tile(def_values[relevant_f], (new_combs.shape[0], 1))
                         new_obs[:, relevant_f] = np.multiply(1 - new_combs, new_obs[:, relevant_f]) + \
                                                  np.multiply(new_combs, def_value_tiles)
-                        # Set default value of categorical variables
-                        new_obs[:, cat_mode_f] = new_combs[:, relevant_cat_f]
                         new_scores = (self.score_f(new_obs) - self.threshold)[:, 1] * class_val
                         for j, new_score in enumerate(new_scores):
                             ix = bisect.bisect(scores, new_score)
@@ -96,10 +76,8 @@ class Explainer(object):
             all_explanations.append(e_list)
         return all_explanations
 
-    def prune_explanation(self, obs, explanation, def_values, active_f, cat_defaults):
+    def prune_explanation(self, obs, explanation, def_values, active_f):
         relevant_f = active_f[explanation]
-        relevant_cat_f = np.in1d(relevant_f, cat_defaults.keys())
-        cat_mode_f = np.array([cat_defaults[f] for f in relevant_f[relevant_cat_f]], dtype=int)
         # Get number of explanation subsets (excluding all variables and no variables)
         n = 2 ** explanation.sum()
         combinations = range(1, n-1)
@@ -119,7 +97,6 @@ class Explainer(object):
             e_bits = ((c & bits) > 0).astype(int)
             t_obs[:, relevant_f] = np.multiply(1 - e_bits, obs[:, relevant_f]) + \
                                     np.multiply(e_bits, def_values[relevant_f])
-            t_obs[:, cat_mode_f] = e_bits[relevant_cat_f]
             score = (self.score_f(t_obs) - self.threshold)[0, 1] * class_val
             if score < 0:
                 # We have a shorter explanation
