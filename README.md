@@ -1,6 +1,17 @@
 # explanations
 
-Explanation for category variables updated (in explanations/explanation/explanations)
+Explanation for category variables updated (in 'explanations/explanation/explanations')
+
+Under 'explanations/explanation/explanations', run
+~~~~ 
+python tester_new.py 
+~~~~
+will produce 'files/set_zero.csv'.
+Or run
+~~~~ 
+python tester_new.py --opt set_average
+~~~~
+will produce 'files/set_average.csv'
 
 LendClub Data also added
 
