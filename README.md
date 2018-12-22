@@ -6,12 +6,12 @@ Under 'explanations/explanation/explanations', run
 ~~~~ 
 python tester_new.py 
 ~~~~
-will produce 'files/set_zero.csv'.
+will produce 'explanations/explanation/files/set_zero.csv'.
 Or run
 ~~~~ 
 python tester_new.py --opt set_average
 ~~~~
-will produce 'files/set_average.csv'
+will produce 'explanations/explanation/files/set_average.csv'
 
 LendClub Data also added
 
