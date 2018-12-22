@@ -34,7 +34,7 @@ class Explainer(object):
         # Init def_modes for discrete features
         def_modes = np.arange(num_of_discrete)
         indices_list = []
-        # assign def_modes values
+        # assign def_modes values: each def_modes saves the index which is the mode of the category
         for i in range(num_of_discrete):
             indices = np.where(feature_types == i)[0]
             indices_list.append(indices)
@@ -78,9 +78,17 @@ class Explainer(object):
                     score = scores.pop(0)
                     # Add to list of explanations if the class changed
                     if score < 0:
-                        if self.prune:
-                            comb = self.prune_explanation(obs, comb, def_values, def_modes, indices_list, relevant_f)
+                        if np.sum(comb) > 1:
+#                             print(comb)
+#                             print('prune')
+                            if self.prune:
+                                comb = self.prune_explanation(obs, comb, def_values, def_modes, indices_list, relevant_f)
+#                             print(comb)
                         explanations = np.vstack((explanations, comb))
+#                         print(relevant_f[comb == 1].tolist())
+#                         print(comb)
+#                         print(relevant_f.shape)
+#                         print(relevant_f[comb == 1].tolist())
                         e_list.append(relevant_f[comb == 1].tolist())
 
                     else:
@@ -102,8 +110,10 @@ class Explainer(object):
                         # new_obs[:, relevant_f] = np.multiply(1 - new_combs, new_obs[:, relevant_f]) + \
                         #                          np.multiply(new_combs, def_value_tiles)
                         for k in range(active_f.size):
+                            # set new value for continuous feature
                             if active_f[k] < num_of_continuous:
                                 new_obs[k, active_f[k]] = def_values[active_f[k]]
+                            # set new value for discrete feature
                             else:
                                 cur_index = int(active_f[k] - num_of_continuous)
                                 new_obs[k, indices_list[cur_index]] = 0
@@ -114,7 +124,7 @@ class Explainer(object):
                             scores.insert(ix, new_score)
                             combs.insert(ix, new_combs[j, :])
             all_explanations.append(e_list)
-        return all_explanations
+        return all_explanations, def_values, def_modes
 
     def prune_explanation(self, obs, explanation, def_values, def_modes, indices_list, active_f):
         relevant_f = active_f[explanation]
@@ -137,8 +147,10 @@ class Explainer(object):
             e_bits = ((c & bits) > 0).astype(int)
             for k in range(len(e_bits)):
                 if e_bits[k] == 1:
+                    # set new value for continuous feature
                     if relevant_f[k] < num_of_continuous:
                         t_obs[:, relevant_f[k]] = def_values[relevant_f[k]]
+                    # set new value for discrete feature
                     else:
                         cur_index = int(relevant_f[k] - num_of_continuous)
                         t_obs[:, indices_list[cur_index]] = 0
