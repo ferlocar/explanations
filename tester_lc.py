@@ -4,11 +4,11 @@ from sklearn.linear_model import LogisticRegression
 import pickle
 import sys
 import argparse
-from explainer_new import Explainer
+from explainer import Explainer
 
 sys.path.insert(0, r'/Users/xintianhan/Downloads/explanation/')
-parser = argparse.ArgumentParser(description='zero or average operator for the continuous variable')
-parser.add_argument('--opt', default='set_zero', help='set_zero or set_average')
+parser = argparse.ArgumentParser(description='mode or average operator for the continuous variable')
+parser.add_argument('--opt', default='explanations_lc', help='File name.')
 args = parser.parse_args()
 
 
@@ -26,7 +26,7 @@ Export explanations to csv file.
     :param write: overwrite 'w'; write in addition to the current file 'a'
     :param file_name: name of the file to which explanations are exported
     """
-    f_path = '../files/' + file_name + '.csv'
+    f_path = './files/' + file_name + '.csv'
     with open(f_path, write, newline='') as export_file:
         writer = csv.writer(export_file)
         if write == 'w':
@@ -51,19 +51,19 @@ Export explanations to csv file.
 
 def main():
     # Load data; we only use training data for explanation
-    X_train, y_train, X_test, y_test = pickle.load(open("../Data/LC_data.pickle", "rb"))
-    feature_types = pickle.load(open("../Data/feature_types.pickle", "rb"))
+    X_train, y_train, X_test, y_test = pickle.load(open("./Data/LC_data.pickle", "rb"))
+    feature_types = pickle.load(open("./Data/feature_types.pickle", "rb"))
     # save type of features
     feature_types = np.array(feature_types)
     # save name of features
-    features = pickle.load(open("../Data/features.pickle", "rb"))
+    features = pickle.load(open("./Data/features.pickle", "rb"))
     # save category name for disrete values
-    discrete_values = pickle.load(open("../Data/discrete_values.pickle", "rb"))
+    discrete_values = pickle.load(open("./Data/discrete_values.pickle", "rb"))
     #     input_file = "files/readyToGo.csv"
     #     data_file = "files/cache/data.pkl"
     #     labels_file = "files/cache/labels.pkl"
     #     features_file = "files/cache/features.pkl"
-    model_file = "../files/cache/model.pkl"
+    model_file = "./files/cache/model2pkl"
     #     try:
     #         data = pickle.load(open(data_file, "rb"))
     #         labels = pickle.load(open(labels_file, "rb"))
@@ -114,10 +114,10 @@ def main():
     threshold = 0.5
     explainer = Explainer(model.predict_proba, threshold)
     max_ite = 20
-    operator = args.opt
+    export_f_name = args.opt
     explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite)
     scores = model.predict_proba(data)[:, 1]
-    export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'w', operator)
+    export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'w', export_f_name)
     # explore different thresholds
     thresholds = [0.45, 0.4, 0.35, 0.3]
     for i in range(len(thresholds)):
@@ -126,7 +126,7 @@ def main():
         max_ite = 20
         explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite)
         scores = model.predict_proba(data)[:, 1]
-        export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'a', operator)
+        export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'a', export_f_name)
 
 
 main()

@@ -1,7 +1,6 @@
 import csv
 import numpy as np
 import pandas as pd
-# from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 import pickle
 from explainer import Explainer
@@ -17,7 +16,7 @@ def read_csv(file_name):
 
 
 def export_explanations(explanations, labels, scores, features):
-    with open('files/explanations.csv', 'w', newline='') as export_file:
+    with open('files/explanations_text.csv', 'w', newline='') as export_file:
         writer = csv.writer(export_file)
         writer.writerow(["Observation", "Label", "Prediction", "Explanation"])
         for i_e, e_list in enumerate(explanations):
@@ -58,8 +57,8 @@ def main():
     data = data[:top_obs, :]
     labels = labels[:top_obs]
     explainer = Explainer(model.predict_proba, 0.5)
-    col_types = np.array(["cat"]*data.shape[1])
-    explanations = explainer.explain(data, col_types)
+    col_types = np.array(['d']*data.shape[1])
+    explanations, _ = explainer.explain(data, col_types)
     scores = model.predict_proba(data)[:, 1]
     export_explanations(explanations, labels, scores, features)
 
