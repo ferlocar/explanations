@@ -4,7 +4,7 @@ import bisect
 
 
 class Explainer(object):
-    def __init__(self, score_f, threshold=0.5, prune=True, omit_default=True):
+    def __init__(self, score_f, threshold=0.5, prune=True, omit_default=True, exp_return = False):
         # Scoring function of the model we want to explain
         self.score_f = score_f
         # Decision threshold of the model
@@ -13,8 +13,10 @@ class Explainer(object):
         self.prune = prune
         # Whether we want to omit explanations from default decisions
         self.omit_default = omit_default
-
-    def explain(self, data, col_types, cat_groups=None, max_ite=20):
+        # Whether we want to make decision based on default probability
+        # or expected interest rate = probability of not default * interest rate
+        self.exp_return = exp_return
+    def explain(self, data, col_types, cat_groups=None, max_ite=20, num_of_obs = 1000, int_rates = None):
         """
 Get explanations.
         :param data: Data
@@ -22,6 +24,7 @@ Get explanations.
         :param cat_groups: List of categorical groups. Each element of the list is a list that includes the indices
         of the features that represent the same categorical variable.
         :param max_ite: integer, number of iterations to get explanations
+        :param int_rates: interest rate; if provided, scores = (1-prob)*int_rates
         :return:    Element 1: List of explanations. Each element is a list that contains the explanations for the
         observation in the ith position. Each explanation is a list that contains the indices of the features present
         in the explanation.
@@ -45,9 +48,16 @@ Get explanations.
             def_values[mode_ix] = 1
             for f in cat_group:
                 cat_defaults[f] = mode_ix
-        for obs in data:
+        for iter in range(num_of_obs):
+            obs = data[iter]
             obs = obs.reshape(1, -1)
-            score = self.score_f(obs)[0, 1] - self.threshold
+            int_rate = None
+            if self.exp_return:
+                int_rate = int_rates[iter]
+            if self.exp_return:
+                score = (1-self.score_f(obs)[0, 1])*int_rate - self.threshold
+            else:
+                score = self.score_f(obs)[0, 1] - self.threshold
             # Get class of the observation
             class_val = 1 if score >= 0 else -1
             # Get relevant features to apply operators
@@ -76,13 +86,15 @@ Get explanations.
                     # Add to list of explanations if the class changed
                     if score < 0:
                         if self.prune:
-                            comb = self.prune_explanation(obs, comb, def_values, relevant_f, cat_defaults)
+                            comb = self.prune_explanation(obs, comb, def_values, relevant_f, cat_defaults, int_rate)
                         explanations = np.vstack((explanations, comb))
                         e_list.append(relevant_f[comb == 1].tolist())
                         # Add categorical modes
                         for f in relevant_f[comb]:
                             if f in cat_defaults:
                                 e_list[-1].append(cat_defaults[f])
+                        # add new prediction
+                        e_list[-1] = [e_list[-1], self.threshold+score*class_val]
                     else:
                         # Get possible features to apply operator
                         active_f = np.where(np.logical_not(comb))[0]
@@ -102,15 +114,19 @@ Get explanations.
                                                  + np.multiply(new_combs, def_value_tiles)
                         # Set default value of categorical variables
                         new_obs[:, cat_mode_f] = new_combs[:, relevant_cat_f]
-                        new_scores = (self.score_f(new_obs) - self.threshold)[:, 1] * class_val
+                        if self.exp_return:
+                            new_scores = ((1-self.score_f(new_obs)) * int_rate - self.threshold)[:, 1] * class_val
+                        else:
+                            new_scores = (self.score_f(new_obs) - self.threshold)[:, 1] * class_val
                         for j, new_score in enumerate(new_scores):
                             ix = bisect.bisect(scores, new_score)
                             scores.insert(ix, new_score)
                             combs.insert(ix, new_combs[j, :])
             all_explanations.append(e_list)
+            iter += 1
         return all_explanations, def_values
 
-    def prune_explanation(self, obs, explanation, def_values, active_f, cat_defaults):
+    def prune_explanation(self, obs, explanation, def_values, active_f, cat_defaults, int_rate):
         relevant_f = active_f[explanation]
         relevant_cat_f = np.in1d(relevant_f, list(cat_defaults.keys()))
         cat_mode_f = np.array([cat_defaults[f] for f in relevant_f[relevant_cat_f]], dtype=int)
@@ -124,7 +140,10 @@ Get explanations.
         combinations = sorted(combinations, key=lambda x: bin(x).count("1"), reverse=True)
         t_obs = np.matrix(obs, copy=True)
         i = 0
-        score = self.score_f(obs)[0, 1] - self.threshold
+        if self.exp_return:
+            score = (1 - self.score_f(obs)[0, 1]) * int_rate - self.threshold
+        else:
+            score = self.score_f(obs)[0, 1] - self.threshold
         class_val = 1 if score >= 0 else -1
         bits = 1 << np.arange(explanation.sum())
         while i < n:
@@ -134,7 +153,10 @@ Get explanations.
             t_obs[:, relevant_f] = np.multiply(1 - e_bits, obs[:, relevant_f]) \
                                    + np.multiply(e_bits, def_values[relevant_f])
             t_obs[:, cat_mode_f] = e_bits[relevant_cat_f]
-            score = (self.score_f(t_obs) - self.threshold)[0, 1] * class_val
+            if self.exp_return:
+                score = ((1-self.score_f(obs)[0, 1])*int_rate - self.threshold) * class_val
+            else:
+                score = (self.score_f(obs)[0, 1] - self.threshold) * class_val
             if score < 0:
                 # We have a shorter explanation
                 explanation = np.in1d(active_f, relevant_f[e_bits == 1])

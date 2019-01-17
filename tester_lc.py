@@ -1,6 +1,14 @@
 import csv
 import numpy as np
 from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import RidgeClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import BaggingClassifier
+from sklearn import svm
 import pickle
 import sys
 import argparse
@@ -8,11 +16,15 @@ from explainer import Explainer
 
 sys.path.insert(0, r'/Users/xintianhan/Downloads/explanation/')
 parser = argparse.ArgumentParser(description='mode or average operator for the continuous variable')
-parser.add_argument('--opt', default='explanations_lc', help='File name.')
+# parser.add_argument('--opt', default='explanations_lc', help='File name.')
+parser.add_argument('--model', default='lc', help='Model name: lc, rf, nb, bag, dt, svm, gb, rg')
+parser.add_argument('--exp', action='store_true', help='use expected interest rate score or not')
+# parser.add_argumnet('--grade', default='A', help='use only grade A or all the grades: A or all')
 args = parser.parse_args()
+args_model = args.model
+args_exp = args.exp
 
-
-def export_explanations(explanations, labels, scores, features, def_values, data, threshold, write, file_name):
+def export_explanations(explanations, labels, scores, features, def_values, data, threshold, write, file_name, mins, maxs, grades_train):
     """
 Export explanations to csv file.
     :param explanations: list of explanation for each observation;
@@ -25,45 +37,63 @@ Export explanations to csv file.
     :param threshold: threshold used to make the decision
     :param write: overwrite 'w'; write in addition to the current file 'a'
     :param file_name: name of the file to which explanations are exported
+    :param mins: an array of mins of continuous features; used for transform the scaled continuous features back
+    :param maxs: an array of maxs of continuous features; used for transform the scaled continuous features back
+    :param grades_train: grade for each instance
     """
     f_path = './files/' + file_name + '.csv'
     with open(f_path, write, newline='') as export_file:
         writer = csv.writer(export_file)
         if write == 'w':
-            writer.writerow(["Observation", "Label", "Prediction", "Threshold", "Explanation", "Change"])
+            writer.writerow(["Observation", "Grade", "Label", "Prediction", "Threshold", "New Prediction", "Explanation", "Change"])
         for i_e, e_list in enumerate(explanations):
             obs = data[i_e]
             if len(e_list) > 0:
-                for e_ix, explanation in enumerate(e_list):
+                for e_ix, exp_score in enumerate(e_list):
+                    # exp_score[0] saves explanation; exp_score[1] saves score after removing evidence
+                    explanation = exp_score[0]
+                    score = exp_score[1]
                     explanation.sort()
                     for f_ix in explanation:
                         change = features[f_ix]
                         change += " from "
-                        change += str(obs[f_ix])
+                        org_obs = obs[f_ix]*(maxs[f_ix]-mins[f_ix]) + mins[f_ix]
+                        change += str(org_obs)
                         change += " to "
-                        change += str(def_values[f_ix])
-                        row = [i_e, labels[i_e], scores[i_e], threshold, e_ix + 1,  change]
+                        org_def_values = def_values[f_ix]*(maxs[f_ix]-mins[f_ix]) + mins[f_ix]
+                        change += str(org_def_values)
+                        row = [i_e, grades_train[i_e], labels[i_e], scores[i_e], threshold, score, e_ix + 1,  change]
                         writer.writerow(row)
             else:
-                row = [i_e, labels[i_e], scores[i_e], threshold, 0, "No Explanation"]
+                row = [i_e, grades_train[i_e], labels[i_e],  scores[i_e],  threshold, None, 0, "No Explanation"]
                 writer.writerow(row)
 
 
 def main():
     # Load data; we only use training data for explanation
     X_train, y_train, X_test, y_test = pickle.load(open("./Data/LC_data.pickle", "rb"))
-    feature_types = pickle.load(open("./Data/feature_types.pickle", "rb"))
+    feature_types = pickle.load(open(".//Data/feature_types.pickle", "rb"))
     # save type of features
     feature_types = np.array(feature_types)
     # save name of features
     features = pickle.load(open("./Data/features.pickle", "rb"))
     # save category name for disrete values
     discrete_values = pickle.load(open("./Data/discrete_values.pickle", "rb"))
+    # save grade for each instance in training set
+    grades_test = pickle.load(open("./Data/grades_test.pickle", "rb"))
+    # save interest rate for each instance in training set
+    int_rates_test = pickle.load(open("./Data/int_rates_test.pickle", "rb"))
+    # # set for grade that has A
+    # A_set = (grades_test == 'A')
+    # save an array of mins of continuous features; used for transform the scaled continuous features back
+    test_mins = pickle.load(open("./Data/test_mins.pickle", "rb"))
+    # save an array of maxs of continuous features; used for transform the scaled continuous features back
+    test_maxs = pickle.load(open("./Data/test_maxs.pickle", "rb"))
     #     input_file = "files/readyToGo.csv"
     #     data_file = "files/cache/data.pkl"
     #     labels_file = "files/cache/labels.pkl"
     #     features_file = "files/cache/features.pkl"
-    model_file = "./files/cache/model2pkl"
+    model_file = "./files/cache/model2pkl_"+args_model
     #     try:
     #         data = pickle.load(open(data_file, "rb"))
     #         labels = pickle.load(open(labels_file, "rb"))
@@ -94,8 +124,13 @@ def main():
         model = pickle.load(open(model_file, "rb"))
     except IOError:
         print("Start fit")
-        # model = LogisticRegression()
-        model = LogisticRegression(penalty='l1', C=4.641588833612778)
+        if args_model == 'lc':
+            model = LogisticRegression(penalty='l1', C=10000.0)
+        elif args_model == 'rf':
+            model = RandomForestClassifier(min_samples_leaf = 8, n_estimators = 35)
+        elif args_model == 'nb':
+            model = GaussianNB()
+        #### Not Complete
         model.fit(data, labels)
         print("Finish fitting")
         pickle.dump(model, open(model_file, "wb"))
@@ -107,26 +142,54 @@ def main():
     cat_n = feature_types.max()
     for i in range(cat_n + 1):
         cat_groups.append(list(np.where(feature_types == i)[0]))
-
-    top_obs = 1000
-    data = data[:top_obs, :]
-    labels = labels[:top_obs]
-    threshold = 0.5
-    explainer = Explainer(model.predict_proba, threshold)
+    # if args.grade == 'A':
+    #     data = data[Aset,:]
+    #     labels = labels[Aset]
+    #     grades_train = grades_train[Aset]
+    data = X_test
+    labels = y_test
+    if args_exp:
+        scores = (1-model.predict_proba(data)[:, 1]) * int_rates_test
+        print('greater than 0.18:', sum(scores/100.0>0.18)/20000.0)
+        print('smaller than 0.06:', sum(scores/100.0<0.06)/20000.0)
+    else:
+        scores = model.predict_proba(data)[:, 1]
+        print('greater than 0.5:', sum(scores>0.5)/20000.0)
+        print('smaller than 0.05:', sum(scores<0.05)/20000.0)
+    # top_obs = 2000
+    # data = data[:top_obs, :]
+    # labels = labels[:top_obs]
+    num_of_obs = 20000
+    if args_exp:
+        threshold = 18
+    else:
+        threshold = 0.5
+    explainer = Explainer(model.predict_proba, threshold, exp_return = args_exp)
     max_ite = 20
-    export_f_name = args.opt
-    explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite)
-    scores = model.predict_proba(data)[:, 1]
-    export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'w', export_f_name)
+    export_f_name = 'explanations_'+args_model
+    if args_exp:
+        export_f_name += '_exp'
+    explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite, num_of_obs, int_rates_test)
+    if args_exp:
+        scores = (1-model.predict_proba(data)[:, 1]) * int_rates_test
+    else:
+        scores = model.predict_proba(data)[:, 1]
+    export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'w', export_f_name, test_mins, test_maxs, grades_test)
     # explore different thresholds
-    thresholds = [0.45, 0.4, 0.35, 0.3]
+    if args_exp:
+        thresholds = [6]
+    else:
+        thresholds = [0.05]
     for i in range(len(thresholds)):
         threshold = thresholds[i]
-        explainer = Explainer(model.predict_proba, threshold)
+        explainer = Explainer(model.predict_proba, threshold, omit_default = False, exp_return = args_exp)
         max_ite = 20
-        explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite)
-        scores = model.predict_proba(data)[:, 1]
-        export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'a', export_f_name)
+        explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite, num_of_obs, int_rates_test)
+        if args_exp:
+            scores = (1 - model.predict_proba(data)[:, 1]) * int_rates_test
+        else:
+            scores = model.predict_proba(data)[:, 1]
+        export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'a', export_f_name, test_mins, test_maxs, grades_test)
 
 
 main()
