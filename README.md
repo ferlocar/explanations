@@ -4,14 +4,16 @@ Explanation for category variables updated (in 'explanations/explanation/explana
 
 Under 'explanations/explanation/explanations', run
 ~~~~ 
-python tester_new.py 
+python tester_new.py --model MODEL_NAME
 ~~~~
-will produce 'explanations/explanation/files/set_zero.csv'.
+will produce 'explanations/explanation/files/explanations_MODEL_NAME.csv'.
 Or run
 ~~~~ 
-python tester_new.py --opt set_average
+python tester_new.py --model MODEL_NAME --exp
 ~~~~
-will produce 'explanations/explanation/files/set_average.csv'
+will produce 'explanations/explanation/files/explanations_MODEL_NAME_exp.csv'
+
+MODEL_NAME allow 'lc' (LogisticRegression) and 'rf' (RandomForest) for now.
 
 LendClub Data also added
 
