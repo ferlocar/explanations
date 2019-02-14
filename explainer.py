@@ -55,7 +55,7 @@ Get explanations.
             if self.exp_return:
                 int_rate = int_rates[iter]
             if self.exp_return:
-                score = (1-self.score_f(obs)[0, 1])*int_rate - self.threshold
+                score = (1-self.score_f(obs)[0, 1])*(100+int_rate) - self.threshold
             else:
                 score = self.score_f(obs)[0, 1] - self.threshold
             # Get class of the observation
@@ -115,7 +115,7 @@ Get explanations.
                         # Set default value of categorical variables
                         new_obs[:, cat_mode_f] = new_combs[:, relevant_cat_f]
                         if self.exp_return:
-                            new_scores = ((1-self.score_f(new_obs)) * int_rate - self.threshold)[:, 1] * class_val
+                            new_scores = ((1-self.score_f(new_obs)) * (100+int_rate) - self.threshold)[:, 1] * class_val
                         else:
                             new_scores = (self.score_f(new_obs) - self.threshold)[:, 1] * class_val
                         for j, new_score in enumerate(new_scores):
@@ -141,7 +141,7 @@ Get explanations.
         t_obs = np.matrix(obs, copy=True)
         i = 0
         if self.exp_return:
-            score = (1 - self.score_f(obs)[0, 1]) * int_rate - self.threshold
+            score = (1 - self.score_f(obs)[0, 1]) * (100+int_rate) - self.threshold
         else:
             score = self.score_f(obs)[0, 1] - self.threshold
         class_val = 1 if score >= 0 else -1
@@ -154,7 +154,7 @@ Get explanations.
                                    + np.multiply(e_bits, def_values[relevant_f])
             t_obs[:, cat_mode_f] = e_bits[relevant_cat_f]
             if self.exp_return:
-                score = ((1-self.score_f(obs)[0, 1])*int_rate - self.threshold) * class_val
+                score = ((1-self.score_f(obs)[0, 1])*(100+int_rate) - self.threshold) * class_val
             else:
                 score = (self.score_f(obs)[0, 1] - self.threshold) * class_val
             if score < 0:

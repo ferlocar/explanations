@@ -23,7 +23,12 @@ parser.add_argument('--exp', action='store_true', help='use expected interest ra
 args = parser.parse_args()
 args_model = args.model
 args_exp = args.exp
-
+# threshold for people getting credits
+upper_threshold = 0.5
+upper_threshold_exp = 105
+# threshold for people not getting credits
+lower_threshold = 0.05
+lower_threshold_exp = 65
 def export_explanations(explanations, labels, scores, features, def_values, data, threshold, write, file_name, mins, maxs, grades_train):
     """
 Export explanations to csv file.
@@ -149,21 +154,21 @@ def main():
     data = X_test
     labels = y_test
     if args_exp:
-        scores = (1-model.predict_proba(data)[:, 1]) * int_rates_test
-        print('greater than 0.18:', sum(scores/100.0>0.18)/20000.0)
-        print('smaller than 0.06:', sum(scores/100.0<0.06)/20000.0)
+        scores = (1-model.predict_proba(data)[:, 1]) * (100+int_rates_test)
+        print('greater than 1.05:', sum(scores > upper_threshold_exp)/20000.0)
+        print('smaller than 0.65:', sum(scores < lower_threshold_exp)/20000.0)
     else:
         scores = model.predict_proba(data)[:, 1]
-        print('greater than 0.5:', sum(scores>0.5)/20000.0)
-        print('smaller than 0.05:', sum(scores<0.05)/20000.0)
+        print('greater than 0.5:', sum(scores > upper_threshold)/20000.0)
+        print('smaller than 0.05:', sum(scores < lower_threshold)/20000.0)
     # top_obs = 2000
     # data = data[:top_obs, :]
     # labels = labels[:top_obs]
-    num_of_obs = 20000
+    num_of_obs = 1000
     if args_exp:
-        threshold = 18
+        threshold = upper_threshold_exp
     else:
-        threshold = 0.5
+        threshold = upper_threshold
     explainer = Explainer(model.predict_proba, threshold, exp_return = args_exp)
     max_ite = 20
     export_f_name = 'explanations_'+args_model
@@ -171,22 +176,22 @@ def main():
         export_f_name += '_exp'
     explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite, num_of_obs, int_rates_test)
     if args_exp:
-        scores = (1-model.predict_proba(data)[:, 1]) * int_rates_test
+        scores = (1-model.predict_proba(data)[:, 1]) * (100+int_rates_test)
     else:
         scores = model.predict_proba(data)[:, 1]
     export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'w', export_f_name, test_mins, test_maxs, grades_test)
     # explore different thresholds
     if args_exp:
-        thresholds = [6]
+        thresholds = [lower_threshold_exp]
     else:
-        thresholds = [0.05]
+        thresholds = [lower_threshold]
     for i in range(len(thresholds)):
         threshold = thresholds[i]
         explainer = Explainer(model.predict_proba, threshold, omit_default = False, exp_return = args_exp)
         max_ite = 20
         explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite, num_of_obs, int_rates_test)
         if args_exp:
-            scores = (1 - model.predict_proba(data)[:, 1]) * int_rates_test
+            scores = (1 - model.predict_proba(data)[:, 1]) * (100+int_rates_test)
         else:
             scores = model.predict_proba(data)[:, 1]
         export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'a', export_f_name, test_mins, test_maxs, grades_test)
