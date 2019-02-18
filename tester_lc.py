@@ -4,6 +4,7 @@ from sklearn.linear_model import LogisticRegression
 import pickle
 import sys
 import argparse
+from scipy import stats
 from explainer import Explainer
 
 sys.path.insert(0, r'/Users/xintianhan/Downloads/explanation/')
@@ -63,7 +64,7 @@ def main():
     #     data_file = "files/cache/data.pkl"
     #     labels_file = "files/cache/labels.pkl"
     #     features_file = "files/cache/features.pkl"
-    model_file = "./files/cache/model2pkl"
+    model_file = "./files/cache/model2.pkl"
     #     try:
     #         data = pickle.load(open(data_file, "rb"))
     #         labels = pickle.load(open(labels_file, "rb"))
@@ -90,6 +91,19 @@ def main():
     data = X_train
     labels = y_train
     features = np.array(features)
+    # Prepare data
+    for f_type in np.unique(feature_types):
+        if f_type != -1:
+            dummy_ixs = np.where(feature_types == f_type)[0]
+            mode_ix = data[:, dummy_ixs].mean(axis=0).argsort()[-1]
+            data = np.delete(data, mode_ix, 1)
+            feature_types = np.delete(feature_types, mode_ix)
+    # Default values
+    def_values = np.empty(data.shape[1])
+    cont_ixs = np.where(feature_types == -1)[0]
+    def_values[cont_ixs] = data[:, cont_ixs].mean(axis=0)
+    disc_ixs = np.where(feature_types != -1)[0]
+    def_values[disc_ixs] = stats.mode(data[:, disc_ixs], axis=0)[0]
     try:
         model = pickle.load(open(model_file, "rb"))
     except IOError:
@@ -99,32 +113,23 @@ def main():
         model.fit(data, labels)
         print("Finish fitting")
         pickle.dump(model, open(model_file, "wb"))
-    # Prepare categorical values
-    col_types = np.empty(feature_types.size, dtype=str)
-    cat_groups = list()
-    col_types[np.where(feature_types == -1)[0]] = "cont"
-    col_types[np.where(feature_types != -1)[0]] = "disc"
-    cat_n = feature_types.max()
-    for i in range(cat_n + 1):
-        cat_groups.append(list(np.where(feature_types == i)[0]))
-
     top_obs = 1000
     data = data[:top_obs, :]
     labels = labels[:top_obs]
     threshold = 0.5
-    explainer = Explainer(model.predict_proba, threshold)
+    explainer = Explainer(model.predict_proba, def_values)
     max_ite = 20
     export_f_name = args.opt
-    explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite)
+    explanations = explainer.explain(data, threshold, max_ite)
     scores = model.predict_proba(data)[:, 1]
     export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'w', export_f_name)
     # explore different thresholds
     thresholds = [0.45, 0.4, 0.35, 0.3]
     for i in range(len(thresholds)):
         threshold = thresholds[i]
-        explainer = Explainer(model.predict_proba, threshold)
+        explainer = Explainer(model.predict_proba, def_values)
         max_ite = 20
-        explanations, def_values = explainer.explain(data, col_types, cat_groups, max_ite)
+        explanations = explainer.explain(data, threshold, max_ite)
         scores = model.predict_proba(data)[:, 1]
         export_explanations(explanations, labels, scores, features, def_values, data, threshold, 'a', export_f_name)
 

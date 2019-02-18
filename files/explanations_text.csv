@@ -15,8 +15,7 @@ Observation,Label,Prediction,Explanation
 13,False,0.0,No Explanation
 14,False,0.0,No Explanation
 15,False,0.0,No Explanation
-16,True,0.6,rington
-16,True,0.6,real,repli
+16,True,0.6,No Explanation
 17,False,0.0,No Explanation
 18,False,0.0,No Explanation
 19,False,0.0,No Explanation
@@ -24,9 +23,7 @@ Observation,Label,Prediction,Explanation
 21,False,0.0,No Explanation
 22,False,0.1,No Explanation
 23,False,0.1,No Explanation
-24,True,1.0,attempt,call,mobil,prize
-24,True,1.0,call,mobil,nd,prize
-24,True,1.0,call,mobil,prize,urgent
+24,True,1.0,No Explanation
 25,False,0.0,No Explanation
 26,False,0.0,No Explanation
 27,False,0.0,No Explanation
@@ -35,14 +32,7 @@ Observation,Label,Prediction,Explanation
 30,False,0.0,No Explanation
 31,False,0.0,No Explanation
 32,False,0.0,No Explanation
-33,True,0.9,shortbreak,www
-33,True,0.9,org,per,www
-33,True,0.9,org,sparkl,www
-33,True,0.9,org,uk,www
-33,True,0.9,per,sparkl,www
-33,True,0.9,per,uk,www
-33,True,0.9,sparkl,uk,www
-33,True,0.9,call,uk,www
+33,True,0.9,No Explanation
 34,False,0.0,No Explanation
 35,False,0.0,No Explanation
 36,False,0.0,No Explanation
@@ -58,11 +48,7 @@ Observation,Label,Prediction,Explanation
 46,False,0.0,No Explanation
 47,False,0.0,No Explanation
 48,False,0.0,No Explanation
-49,True,1.0,mobil,text,video
-49,True,1.0,appli,mobil,text
-49,True,1.0,appli,mobil,video
-49,True,1.0,free,mobil,video
-49,True,1.0,mobil,video,yrs
+49,True,1.0,No Explanation
 50,False,0.3,No Explanation
 51,False,0.0,No Explanation
 52,False,0.0,No Explanation
@@ -73,27 +59,19 @@ Observation,Label,Prediction,Explanation
 57,False,0.0,No Explanation
 58,False,0.0,No Explanation
 59,False,0.0,No Explanation
-60,True,0.9,call,win
-60,True,0.9,call,cash,claim
+60,True,0.9,No Explanation
 61,False,0.0,No Explanation
 62,False,0.0,No Explanation
 63,False,0.0,No Explanation
-64,True,1.0,arriv,custom,mobil,tone
-64,True,1.0,arriv,mobil,order,pleas,tone
-64,True,1.0,arriv,mobil,order,pleas,ref,servic
-64,True,1.0,arriv,mobil,order,pleas,rington,servic
-64,True,1.0,arriv,mobil,order,ref,servic,tone
+64,True,1.0,No Explanation
 65,False,0.0,No Explanation
 66,False,0.0,No Explanation
-67,True,0.6,vodafon
-67,True,0.6,goten,prem
-67,True,0.6,goten,subscript
-67,True,0.6,prem,subscript
+67,True,0.6,No Explanation
 68,False,0.0,No Explanation
 69,False,0.0,No Explanation
 70,False,0.0,No Explanation
 71,False,0.0,No Explanation
-72,True,1.0,box,goto,servic,stop,unsubscrib
+72,True,1.0,No Explanation
 73,False,0.3,No Explanation
 74,False,0.0,No Explanation
 75,False,0.0,No Explanation
@@ -106,52 +84,30 @@ Observation,Label,Prediction,Explanation
 82,False,0.0,No Explanation
 83,False,0.0,No Explanation
 84,False,0.0,No Explanation
-85,True,1.0,custom,servic
-85,True,1.0,servic,uniqu
-85,True,1.0,servic,user
+85,True,1.0,No Explanation
 86,False,0.0,No Explanation
-87,True,0.7,max,msg
-87,True,0.7,msg,web
-87,True,0.7,msg,www
-87,True,0.7,max,web
-87,True,0.7,age,web,www
-87,True,0.7,com,web,www
+87,True,0.7,No Explanation
 88,False,0.0,No Explanation
 89,False,0.0,No Explanation
-90,True,0.8,co,uk
-90,True,0.8,co,game
-90,True,0.8,co,dear,emc
-90,True,0.8,co,dear,free
+90,True,0.8,No Explanation
 91,False,0.0,No Explanation
 92,False,0.0,No Explanation
-93,True,0.7,servic
+93,True,0.7,No Explanation
 94,False,0.0,No Explanation
 95,False,0.0,No Explanation
 96,False,0.0,No Explanation
 97,False,0.0,No Explanation
-98,True,0.7,pobox
-98,True,0.7,call,fanci
-98,True,0.7,fanci,find
-98,True,0.7,find,someon
-98,True,0.7,fanci,someon
-98,True,0.7,know,someon
+98,True,0.7,No Explanation
 99,False,0.0,No Explanation
 100,False,0.0,No Explanation
 101,False,0.0,No Explanation
 102,False,0.0,No Explanation
 103,False,0.0,No Explanation
 104,False,0.0,No Explanation
-105,True,1.0,auction,nokia,win
-105,True,1.0,auction,land,nokia,part,wjhl
+105,True,1.0,No Explanation
 106,False,0.0,No Explanation
-107,True,1.0,call,min,nation,per,prize
-107,True,1.0,bt,call,claim,min,nation,prize
-107,True,1.0,call,claim,contact,nation,prize
-107,True,1.0,call,claim,min,nation,pound,prize
-107,True,1.0,call,claim,min,nation,prize,rate
-108,True,0.9,collect,fml,free,po,rington
-108,True,0.9,collect,fml,free,po,wait
-108,True,0.9,box,collect,fml,rington
+107,True,1.0,No Explanation
+108,True,0.9,No Explanation
 109,False,0.0,No Explanation
 110,False,0.0,No Explanation
 111,False,0.0,No Explanation
@@ -163,65 +119,37 @@ Observation,Label,Prediction,Explanation
 117,False,0.1,No Explanation
 118,False,0.0,No Explanation
 119,False,0.0,No Explanation
-120,True,1.0,co,free,get,mobil,pobox,tone,ur
-120,True,1.0,co,free,mobil,pobox,tone,uk,ur
-120,True,1.0,co,free,mobil,pobox,tone,ur,www
-120,True,1.0,co,free,normp,pobox,tone,ur,www
+120,True,1.0,No Explanation
 121,False,0.0,No Explanation
 122,False,0.0,No Explanation
 123,False,0.0,No Explanation
 124,False,0.0,No Explanation
 125,False,0.0,No Explanation
-126,True,1.0,appli,call
-126,True,1.0,call,cs
+126,True,1.0,No Explanation
 127,False,0.0,No Explanation
 128,False,0.0,No Explanation
 129,False,0.0,No Explanation
 130,False,0.0,No Explanation
-131,True,0.6,www
-131,True,0.6,free
-131,True,0.6,locat,repli
+131,True,0.6,No Explanation
 132,False,0.0,No Explanation
 133,False,0.0,No Explanation
-134,True,1.0,call,claim,prize
+134,True,1.0,No Explanation
 135,False,0.0,No Explanation
-136,True,1.0,tone,ur
-136,True,1.0,nokia,tone,txt
-136,True,1.0,mob,nokia,tone
-136,True,1.0,nokia,tone,zed
-136,True,1.0,mob,tone,txt
-136,True,1.0,ms,tone,txt
+136,True,1.0,No Explanation
 137,False,0.0,No Explanation
-138,True,1.0,await,box,call,collect
-138,True,1.0,await,box,call,cash,cs,ppm
-138,True,1.0,await,box,call,cash,cs,sae
-138,True,1.0,await,box,call,cash,cs,urgent
-138,True,1.0,await,box,call,cash,ppm,sae
-138,True,1.0,await,box,call,cash,sae,urgent
+138,True,1.0,No Explanation
 139,False,0.0,No Explanation
 140,False,0.0,No Explanation
-141,True,1.0,account,expir,statement
-141,True,1.0,account,call,code,statement
-141,True,1.0,account,call,privat,statement
-141,True,1.0,account,call,redeem,statement
-141,True,1.0,account,code,identifi,statement
-141,True,1.0,account,code,redeem,statement
-141,True,1.0,account,identifi,redeem,statement
+141,True,1.0,No Explanation
 142,False,0.0,No Explanation
 143,False,0.0,No Explanation
-144,True,1.0,call,free,motorola
-144,True,1.0,call,calloptout,free,orang
-144,True,1.0,call,calloptout,free,latest
-144,True,1.0,call,calloptout,free,nokia
-144,True,1.0,call,free,min,nokia
-144,True,1.0,call,free,min,orang
-144,True,1.0,call,free,nokia,orang
+144,True,1.0,No Explanation
 145,False,0.0,No Explanation
 146,False,0.0,No Explanation
 147,False,0.0,No Explanation
 148,False,0.0,No Explanation
 149,False,0.0,No Explanation
-150,True,0.9,mobil
+150,True,0.9,No Explanation
 151,False,0.0,No Explanation
 152,False,0.0,No Explanation
 153,False,0.0,No Explanation
@@ -233,11 +161,7 @@ Observation,Label,Prediction,Explanation
 159,False,0.0,No Explanation
 160,False,0.0,No Explanation
 161,False,0.0,No Explanation
-162,True,0.9,msg,win
-162,True,0.9,quiz,win
-162,True,0.9,custcar,win
-162,True,0.9,rcvd,win
-162,True,0.9,partner,special,win
+162,True,0.9,No Explanation
 163,False,0.0,No Explanation
 164,False,0.0,No Explanation
 165,False,0.0,No Explanation
@@ -249,13 +173,7 @@ Observation,Label,Prediction,Explanation
 171,False,0.0,No Explanation
 172,False,0.1,No Explanation
 173,False,0.0,No Explanation
-174,True,0.8,bought,cost,one
-174,True,0.8,bought,cost,tone
-174,True,0.8,bought,one,text
-174,True,0.8,bought,one,tone
-174,True,0.8,bought,text,tone
-174,True,0.8,bought,rington,text
-174,True,0.8,bought,pound,tone
+174,True,0.8,No Explanation
 175,False,0.0,No Explanation
 176,False,0.0,No Explanation
 177,False,0.0,No Explanation
@@ -275,7 +193,7 @@ Observation,Label,Prediction,Explanation
 191,False,0.0,No Explanation
 192,False,0.0,No Explanation
 193,False,0.0,No Explanation
-194,True,1.0,club,co,credit,www
+194,True,1.0,No Explanation
 195,False,0.0,No Explanation
 196,False,0.0,No Explanation
 197,False,0.0,No Explanation
@@ -286,15 +204,8 @@ Observation,Label,Prediction,Explanation
 202,False,0.0,No Explanation
 203,False,0.0,No Explanation
 204,False,0.0,No Explanation
-205,True,1.0,await,call,collect
-205,True,1.0,await,call,cash,cs,ppm
-205,True,1.0,await,call,canari,cash,ppm,sae
-205,True,1.0,await,call,cash,landlin,ppm,urgent
-206,True,0.9,free,tone
-206,True,0.9,new,poli,tone
-206,True,0.9,new,text,tone
-206,True,0.9,new,tone,wk
-206,True,0.9,new,tone,yrs
+205,True,1.0,No Explanation
+206,True,0.9,No Explanation
 207,False,0.0,No Explanation
 208,False,0.0,No Explanation
 209,False,0.0,No Explanation
@@ -313,35 +224,19 @@ Observation,Label,Prediction,Explanation
 222,False,0.0,No Explanation
 223,False,0.0,No Explanation
 224,False,0.0,No Explanation
-225,True,1.0,attempt,await,call,claim,urgent
-225,True,1.0,attempt,await,call,claim,contact
-225,True,1.0,attempt,await,call,claim,nd
-225,True,1.0,await,call,contact,prize,urgent
-225,True,1.0,attempt,await,call,claim,collect,prize,still
+225,True,1.0,No Explanation
 226,False,0.0,No Explanation
 227,False,0.0,No Explanation
 228,False,0.0,No Explanation
 229,False,0.2,No Explanation
 230,False,0.0,No Explanation
-231,True,1.0,box,call
-231,True,1.0,box,ltd,min,po
-231,True,1.0,box,ltd,min,wb
-231,True,1.0,box,min,po,wb
+231,True,1.0,No Explanation
 232,False,0.0,No Explanation
 233,False,0.0,No Explanation
 234,False,0.1,No Explanation
 235,False,0.0,No Explanation
 236,False,0.0,No Explanation
-237,True,0.8,text,textoper
-237,True,0.8,da,text
-237,True,0.8,old,text
-237,True,0.8,sue,text
-237,True,0.8,sue,textoper
-237,True,0.8,da,textoper
-237,True,0.8,hi,textoper
-237,True,0.8,old,textoper
-237,True,0.8,sex,textoper
-237,True,0.8,textoper,work
+237,True,0.8,No Explanation
 238,False,0.0,No Explanation
 239,False,0.0,No Explanation
 240,False,0.0,No Explanation
@@ -353,30 +248,17 @@ Observation,Label,Prediction,Explanation
 246,False,0.0,No Explanation
 247,False,0.0,No Explanation
 248,False,0.0,No Explanation
-249,True,1.0,age,skilgm,win
-249,True,1.0,age,txt,win
-249,True,1.0,age,ur,win
-249,True,1.0,age,win,wk
-249,True,1.0,skilgm,txt,win
-249,True,1.0,skilgm,ur,win
-249,True,1.0,skilgm,win,wk
-249,True,1.0,txt,win,wk
-249,True,1.0,ur,win,wk
+249,True,1.0,No Explanation
 250,False,0.0,No Explanation
-251,True,0.8,tone
+251,True,0.8,No Explanation
 252,False,0.0,No Explanation
 253,False,0.0,No Explanation
 254,False,0.0,No Explanation
 255,False,0.0,No Explanation
 256,False,0.0,No Explanation
-257,True,1.0,content,game,mobil,tone
-257,True,1.0,mobil,text,tone
-257,True,1.0,content,mobil,newest,sport,tone
-257,True,1.0,content,mobil,newest,themob,tone
-257,True,1.0,content,mobil,newest,tone,wap
+257,True,1.0,No Explanation
 258,False,0.0,No Explanation
-259,True,1.0,instruct,new,tone
-259,True,1.0,includ,instruct,new,sara
+259,True,1.0,No Explanation
 260,False,0.0,No Explanation
 261,False,0.0,No Explanation
 262,False,0.0,No Explanation
@@ -386,9 +268,7 @@ Observation,Label,Prediction,Explanation
 266,False,0.0,No Explanation
 267,False,0.0,No Explanation
 268,False,0.0,No Explanation
-269,True,1.0,contact,date,po
-269,True,1.0,box,contact,guess,po,servic
-269,True,1.0,call,contact,guess,po,servic
+269,True,1.0,No Explanation
 270,False,0.0,No Explanation
 271,False,0.0,No Explanation
 272,False,0.0,No Explanation
@@ -398,34 +278,18 @@ Observation,Label,Prediction,Explanation
 276,False,0.0,No Explanation
 277,False,0.0,No Explanation
 278,False,0.0,No Explanation
-279,True,1.0,box,game,rington,stop,tone
-279,True,1.0,game,rington,stop,tone,txt
-279,True,1.0,box,game,stop,tone,txt
-279,True,1.0,england,game,mobil,rington,stop,tone
-279,True,1.0,poli,rington,stop,text,tone
-280,True,1.0,free,get,pobox,tone,txt
-280,True,1.0,free,mob,pobox,tone,txt
-280,True,1.0,free,normp,pobox,tone,txt
-280,True,1.0,free,pobox,tone,ur
-280,True,1.0,mob,pobox,tone,txt,week
-280,True,1.0,mob,normp,pobox,tone,txt
-280,True,1.0,normp,pobox,tone,txt,week
+279,True,1.0,No Explanation
+280,True,1.0,No Explanation
 281,False,0.0,No Explanation
 282,False,0.0,No Explanation
 283,False,0.0,No Explanation
 284,False,0.0,No Explanation
-285,True,1.0,arriv,custom,mobil,tone
-285,True,1.0,arriv,mobil,order,pleas,tone
-285,True,1.0,arriv,mobil,order,pleas,ref,servic
-285,True,1.0,arriv,mobil,order,pleas,rington,servic
-285,True,1.0,arriv,mobil,order,ref,servic,tone
+285,True,1.0,No Explanation
 286,False,0.1,No Explanation
 287,False,0.0,No Explanation
 288,False,0.0,No Explanation
 289,False,0.0,No Explanation
-290,True,1.0,box,claim,eir,po,send,sunshin
-290,True,1.0,box,claim,eir,po,send,uk,ur
-290,True,1.0,box,claim,eir,po,send,unsub,ur
+290,True,1.0,No Explanation
 291,False,0.0,No Explanation
 292,False,0.0,No Explanation
 293,False,0.0,No Explanation
@@ -437,25 +301,14 @@ Observation,Label,Prediction,Explanation
 299,False,0.0,No Explanation
 300,False,0.0,No Explanation
 301,False,0.1,No Explanation
-302,True,0.8,http,www
+302,True,0.8,No Explanation
 303,False,0.0,No Explanation
-304,True,0.9,gamestar,opt,sky
-304,True,0.9,fantasi,gamestar,opt
-304,True,0.9,footbal,gamestar,opt
-304,True,0.9,gamestar,opt,regist
-304,True,0.9,gamestar,opt,saturday
-304,True,0.9,gamestar,opt,team
-304,True,0.9,fantasi,gamestar,sky
-304,True,0.9,footbal,gamestar,sky
-304,True,0.9,gamestar,regist,sky
-304,True,0.9,gamestar,sky,team
+304,True,0.9,No Explanation
 305,False,0.0,No Explanation
 306,False,0.0,No Explanation
 307,False,0.0,No Explanation
 308,True,1.0,No Explanation
-309,True,1.0,call,min,repli,video
-309,True,1.0,call,line,video
-309,True,1.0,call,deliveri,handset,min,rental,video
+309,True,1.0,No Explanation
 310,False,0.0,No Explanation
 311,False,0.0,No Explanation
 312,False,0.0,No Explanation
@@ -475,27 +328,15 @@ Observation,Label,Prediction,Explanation
 326,False,0.0,No Explanation
 327,False,0.0,No Explanation
 328,False,0.0,No Explanation
-329,True,1.0,repli,sms,www
-329,True,1.0,ac,sms,www
-329,True,1.0,sms,stop,www
+329,True,1.0,No Explanation
 330,False,0.0,No Explanation
 331,False,0.0,No Explanation
-332,True,1.0,pleas,pm,prize,servic
-332,True,1.0,guarante,pm,prize,servic
-332,True,1.0,cash,custom,pm,prize,servic
-332,True,1.0,call,custom,pm,prize,servic
-332,True,1.0,cash,custom,guarante,pleas,pm,prize
+332,True,1.0,No Explanation
 333,False,0.0,No Explanation
 334,False,0.0,No Explanation
 335,False,0.3,No Explanation
-336,True,1.0,box,game,rington,stop,tone
-336,True,1.0,game,rington,stop,tone,txt
-336,True,1.0,box,game,stop,tone,txt
-336,True,1.0,england,game,mobil,rington,stop,tone
-336,True,1.0,poli,rington,stop,text,tone
-337,True,0.8,call,www
-337,True,0.8,call,custom,prize
-337,True,0.8,call,prize,wj
+336,True,1.0,No Explanation
+337,True,0.8,No Explanation
 338,False,0.0,No Explanation
 339,False,0.0,No Explanation
 340,False,0.0,No Explanation
@@ -504,22 +345,8 @@ Observation,Label,Prediction,Explanation
 343,False,0.0,No Explanation
 344,False,0.0,No Explanation
 345,False,0.1,No Explanation
-346,True,0.8,cola,st
-346,True,0.8,cola,top
-346,True,0.8,coca,cola,footi
-346,True,0.8,coca,cola,larg
-346,True,0.8,coca,cola,winner
-346,True,0.8,cola,footi,larg
-346,True,0.8,cola,footi,winner
-346,True,0.8,cola,larg,winner
-347,True,1.0,call,follow,mob
-347,True,1.0,call,follow,prize
-347,True,1.0,call,follow,valu
-347,True,1.0,call,custom,mob
-347,True,1.0,call,mob,prize
-347,True,1.0,call,mob,valu
-347,True,1.0,call,custom,prize
-347,True,1.0,call,prize,valu
+346,True,0.8,No Explanation
+347,True,1.0,No Explanation
 348,False,0.0,No Explanation
 349,False,0.0,No Explanation
 350,False,0.0,No Explanation
@@ -537,13 +364,7 @@ Observation,Label,Prediction,Explanation
 362,False,0.0,No Explanation
 363,False,0.0,No Explanation
 364,False,0.0,No Explanation
-365,True,1.0,balanc,cash,ur,wjhl
-365,True,1.0,balanc,cash,hg,ur
-365,True,1.0,balanc,cash,pound,ur
-365,True,1.0,cash,hg,pound,ur
-365,True,1.0,cash,hg,ur,wjhl
-365,True,1.0,cash,pound,suit,ur
-365,True,1.0,balanc,cash,cc,row,ur
+365,True,1.0,No Explanation
 366,False,0.0,No Explanation
 367,False,0.0,No Explanation
 368,False,0.0,No Explanation
@@ -558,28 +379,13 @@ Observation,Label,Prediction,Explanation
 377,False,0.0,No Explanation
 378,False,0.0,No Explanation
 379,False,0.1,No Explanation
-380,True,1.0,call,claim,contact,show
-380,True,1.0,call,claim,hrs,prize,show
-380,True,1.0,call,claim,code,prize,show
-380,True,1.0,call,claim,guarante,hrs,show,urgent
-380,True,1.0,call,claim,hrs,last,show,urgent
-380,True,1.0,call,claim,guarante,prize,show,urgent
-381,True,0.9,appli,http
-381,True,0.9,career,http
-381,True,0.9,center,http
-381,True,0.9,futur,http
-381,True,0.9,http,wait
+380,True,1.0,No Explanation
+381,True,0.9,No Explanation
 382,False,0.0,No Explanation
-383,True,0.9,servic,stop
-383,True,0.9,good,servic,sms
-383,True,0.9,luck,servic,sms
-383,True,0.9,market,servic,sms
-383,True,0.9,repli,servic,sms
+383,True,0.9,No Explanation
 384,False,0.0,No Explanation
 385,False,0.0,No Explanation
-386,True,1.0,attempt,call,mobil,prize
-386,True,1.0,call,mobil,nd,prize
-386,True,1.0,call,mobil,prize,urgent
+386,True,1.0,No Explanation
 387,False,0.0,No Explanation
 388,False,0.0,No Explanation
 389,False,0.1,No Explanation
@@ -595,20 +401,12 @@ Observation,Label,Prediction,Explanation
 399,False,0.0,No Explanation
 400,False,0.0,No Explanation
 401,False,0.0,No Explanation
-402,True,1.0,mobil,nokia
-402,True,1.0,custom,mobil,new
-402,True,1.0,custom,get,mobil
-402,True,1.0,get,mobil,new
-402,True,1.0,ibh,mobil,new
-402,True,1.0,loyalti,mobil,new
-402,True,1.0,custom,ibh,mobil,txt
+402,True,1.0,No Explanation
 403,False,0.0,No Explanation
 404,False,0.0,No Explanation
 405,False,0.0,No Explanation
 406,False,0.0,No Explanation
-407,True,0.6,text
-407,True,0.6,unsubscrib
-407,True,0.6,horni,stop
+407,True,0.6,No Explanation
 408,False,0.0,No Explanation
 409,False,0.0,No Explanation
 410,False,0.0,No Explanation
@@ -617,12 +415,7 @@ Observation,Label,Prediction,Explanation
 413,False,0.0,No Explanation
 414,False,0.0,No Explanation
 415,False,0.0,No Explanation
-416,True,0.8,servic,text
-416,True,0.8,date,servic
-416,True,0.8,love,servic
-416,True,0.8,new,servic
-416,True,0.8,servic,sexi
-416,True,0.8,servic,talk
+416,True,0.8,No Explanation
 417,False,0.2,No Explanation
 418,False,0.0,No Explanation
 419,False,0.0,No Explanation
@@ -635,13 +428,11 @@ Observation,Label,Prediction,Explanation
 426,False,0.0,No Explanation
 427,False,0.0,No Explanation
 428,False,0.0,No Explanation
-429,True,0.8,choos,mobil
-429,True,0.8,cfcaa,choos,club
-429,True,0.8,club,mobil
+429,True,0.8,No Explanation
 430,False,0.0,No Explanation
 431,False,0.0,No Explanation
 432,False,0.0,No Explanation
-433,True,0.8,http
+433,True,0.8,No Explanation
 434,False,0.0,No Explanation
 435,False,0.0,No Explanation
 436,False,0.0,No Explanation
@@ -650,11 +441,7 @@ Observation,Label,Prediction,Explanation
 439,False,0.0,No Explanation
 440,False,0.0,No Explanation
 441,False,0.0,No Explanation
-442,True,1.0,dvd,quiz,win
-442,True,1.0,dvd,sp,win
-442,True,1.0,dvd,tyron,win
-442,True,1.0,dvd,player,sunshin,win
-442,True,1.0,dvd,sunshin,top,win
+442,True,1.0,No Explanation
 443,False,0.0,No Explanation
 444,False,0.0,No Explanation
 445,False,0.0,No Explanation
@@ -666,25 +453,14 @@ Observation,Label,Prediction,Explanation
 451,False,0.0,No Explanation
 452,False,0.0,No Explanation
 453,False,0.1,No Explanation
-454,True,1.0,call,mobil,rington,servic,tone
-455,True,0.9,call,mobil,servic
-455,True,0.9,call,contact,landlin,servic
+454,True,1.0,No Explanation
+455,True,0.9,No Explanation
 456,False,0.0,No Explanation
 457,False,0.0,No Explanation
-458,True,1.0,call,custom,valu,vodafon
-458,True,1.0,call,easi,valu,vodafon
-458,True,1.0,call,valu,vodafon,win
-458,True,1.0,call,custom,vodafon,win
-458,True,1.0,call,easi,vodafon,win
-458,True,1.0,collect,prize,vodafon,win
+458,True,1.0,No Explanation
 459,False,0.0,No Explanation
 460,False,0.0,No Explanation
-461,True,1.0,bx,call
-461,True,1.0,call,matrix
-461,True,1.0,call,pm
-461,True,1.0,call,special
-461,True,1.0,call,suprman
-461,True,1.0,call,year
+461,True,1.0,No Explanation
 462,False,0.0,No Explanation
 463,False,0.0,No Explanation
 464,False,0.0,No Explanation
@@ -696,11 +472,7 @@ Observation,Label,Prediction,Explanation
 470,False,0.0,No Explanation
 471,False,0.0,No Explanation
 472,False,0.0,No Explanation
-473,True,1.0,auction,nokia,win
-473,True,1.0,hg,nokia,win
-473,True,1.0,nokia,send,win
-473,True,1.0,nokia,take,win
-473,True,1.0,nokia,win,wjhl
+473,True,1.0,No Explanation
 474,False,0.0,No Explanation
 475,False,0.0,No Explanation
 476,False,0.0,No Explanation
@@ -711,29 +483,14 @@ Observation,Label,Prediction,Explanation
 481,False,0.0,No Explanation
 482,False,0.0,No Explanation
 483,False,0.0,No Explanation
-484,True,0.8,eg,mobil,txt
-484,True,0.8,club,eg,mobil,new
-484,True,0.8,club,eg,mobil,news
-484,True,0.8,club,eg,mobil,ur
-484,True,0.8,eg,kick,mobil,new
-484,True,0.8,eg,mobil,new,ur
-484,True,0.8,eg,free,mobil,ur
+484,True,0.8,No Explanation
 485,False,0.0,No Explanation
 486,False,0.0,No Explanation
 487,False,0.0,No Explanation
 488,False,0.0,No Explanation
-489,True,0.6,win
-489,True,0.6,adp,repli
-490,True,0.9,suit,txt
-490,True,0.9,chat,suit,uk
-490,True,0.9,chat,suit,ur
-490,True,0.9,ldn,suit,yrs
-491,True,0.9,call,video
-491,True,0.9,contact,repli,tri,video
-491,True,0.9,contact,handset,min,repli,video
-491,True,0.9,contact,handset,text,tri,video
-491,True,0.9,contact,handset,text,unlimit,video
-491,True,0.9,contact,handset,offer,repli,text,video
+489,True,0.6,No Explanation
+490,True,0.9,No Explanation
+491,True,0.9,No Explanation
 492,False,0.0,No Explanation
 493,False,0.0,No Explanation
 494,False,0.0,No Explanation
@@ -743,13 +500,8 @@ Observation,Label,Prediction,Explanation
 498,False,0.0,No Explanation
 499,False,0.0,No Explanation
 500,False,0.3,No Explanation
-501,True,1.0,draw,subscrib,voucher
-501,True,1.0,draw,gift,subscrib,ur
-501,True,1.0,draw,subscrib,txt,ur
-501,True,1.0,correct,draw,subscrib,ur
-501,True,1.0,an,draw,gift,presley,subscrib
-502,True,1.0,new,repli,rington,tone,ur
-502,True,1.0,appli,co,new,repli,rington,tone,www
+501,True,1.0,No Explanation
+502,True,1.0,No Explanation
 503,False,0.0,No Explanation
 504,False,0.0,No Explanation
 505,False,0.0,No Explanation
@@ -758,16 +510,7 @@ Observation,Label,Prediction,Explanation
 508,False,0.0,No Explanation
 509,False,0.0,No Explanation
 510,False,0.0,No Explanation
-511,True,1.0,call,contact,video
-511,True,1.0,call,deliveri,free,video
-511,True,1.0,call,deliveri,new,video
-511,True,1.0,call,deliveri,offer,video
-511,True,1.0,call,free,offer,video
-511,True,1.0,call,free,repli,video
-511,True,1.0,call,new,offer,video
-511,True,1.0,call,new,repli,video
-511,True,1.0,call,min,offer,video
-511,True,1.0,call,deliveri,min,repli,video
+511,True,1.0,No Explanation
 512,False,0.0,No Explanation
 513,False,0.0,No Explanation
 514,False,0.0,No Explanation
@@ -784,15 +527,9 @@ Observation,Label,Prediction,Explanation
 525,False,0.1,No Explanation
 526,False,0.0,No Explanation
 527,True,0.9,No Explanation
-528,True,1.0,call,calloptout,line
-528,True,1.0,call,line,min
-528,True,1.0,call,line,orang
-528,True,1.0,call,line,rental
+528,True,1.0,No Explanation
 529,False,0.0,No Explanation
-530,True,1.0,co,free,get,pobox,tone,ur
-530,True,1.0,co,free,pobox,tone,uk,ur
-530,True,1.0,co,free,mob,pobox,tone,ur,www
-530,True,1.0,co,free,normp,pobox,tone,ur,www
+530,True,1.0,No Explanation
 531,False,0.0,No Explanation
 532,False,0.0,No Explanation
 533,False,0.0,No Explanation
@@ -801,80 +538,41 @@ Observation,Label,Prediction,Explanation
 536,False,0.1,No Explanation
 537,False,0.0,No Explanation
 538,False,0.0,No Explanation
-539,True,1.0,co,www
-539,True,1.0,co,month,uk,ur
+539,True,1.0,No Explanation
 540,False,0.0,No Explanation
 541,False,0.0,No Explanation
 542,False,0.0,No Explanation
 543,False,0.0,No Explanation
 544,False,0.0,No Explanation
-545,True,0.8,tfp
+545,True,0.8,No Explanation
 546,False,0.0,No Explanation
-547,True,1.0,call,contact
-547,True,1.0,call,secret,think
-547,True,1.0,admir,call,secret
-547,True,1.0,call,reveal,secret
-547,True,1.0,call,secret,ur
-547,True,1.0,admir,call,think
-547,True,1.0,call,think,ur
-547,True,1.0,admir,call,ur
+547,True,1.0,No Explanation
 548,False,0.0,No Explanation
 549,False,0.0,No Explanation
-550,True,1.0,call,co,mobil
-550,True,1.0,call,camera,mobil
-550,True,1.0,call,free,mobil
-550,True,1.0,call,mobil,month
+550,True,1.0,No Explanation
 551,False,0.0,No Explanation
 552,False,0.0,No Explanation
-553,True,0.9,camera,cs,min,orang,txt
-553,True,0.9,camera,min,new,orang,txt
-553,True,0.9,camera,cs,doubl,latest,min,orang
-553,True,0.9,call,cs,free,min,orang
-553,True,0.9,camera,cs,free,get,min,orang
-553,True,0.9,camera,cs,free,min,orang,phone
-553,True,0.9,camera,cs,latest,min,new,orang
+553,True,0.9,No Explanation
 554,False,0.0,No Explanation
 555,False,0.0,No Explanation
 556,False,0.0,No Explanation
 557,False,0.0,No Explanation
-558,True,0.9,ad,eg,txt
-558,True,0.9,ad,adam,eg
-558,True,0.9,ad,eg,eve
-558,True,0.9,ad,eg,poboxwwq
-558,True,0.9,ad,eg,send
-558,True,0.9,ad,eg,ur
-558,True,0.9,ad,eg,yahoo
-558,True,0.9,ad,adam,txt
-558,True,0.9,ad,eve,txt
-558,True,0.9,ad,txt,yahoo
+558,True,0.9,No Explanation
 559,False,0.0,No Explanation
 560,False,0.1,No Explanation
 561,False,0.0,No Explanation
 562,False,0.0,No Explanation
 563,False,0.0,No Explanation
-564,True,1.0,box,cs,win
-564,True,1.0,box,cs,gbp,text
-564,True,1.0,box,cs,text,week
-564,True,1.0,cs,gbp,smart,text
-564,True,1.0,cs,gbp,po,text,win
+564,True,1.0,No Explanation
 565,False,0.0,No Explanation
 566,False,0.0,No Explanation
 567,False,0.0,No Explanation
 568,False,0.0,No Explanation
-569,True,1.0,age,text,uk
-569,True,1.0,age,new,text
-569,True,1.0,age,text,txt
-569,True,1.0,age,free,sex,text
+569,True,1.0,No Explanation
 570,False,0.0,No Explanation
 571,False,0.0,No Explanation
 572,False,0.1,No Explanation
-573,True,0.6,user
-573,True,0.6,champney,dob
-573,True,0.6,champney,prod
-573,True,0.6,champney,trial
-573,True,0.6,dob,prod
-573,True,0.6,dob,trial
-573,True,0.6,prod,trial
+573,True,0.6,No Explanation
 574,False,0.0,No Explanation
 575,False,0.0,No Explanation
 576,False,0.0,No Explanation
@@ -887,12 +585,8 @@ Observation,Label,Prediction,Explanation
 583,False,0.0,No Explanation
 584,False,0.0,No Explanation
 585,False,0.0,No Explanation
-586,True,0.9,co,ipod,mobil,prize,www
-587,True,0.9,answer,com,info,voucher
-587,True,0.9,answer,com,info,www
-587,True,0.9,info,voucher,www
-587,True,0.9,info,pound,www
-587,True,0.9,info,special,www
+586,True,0.9,No Explanation
+587,True,0.9,No Explanation
 588,False,0.0,No Explanation
 589,False,0.0,No Explanation
 590,False,0.0,No Explanation
@@ -909,54 +603,25 @@ Observation,Label,Prediction,Explanation
 601,False,0.0,No Explanation
 602,False,0.1,No Explanation
 603,False,0.0,No Explanation
-604,True,0.7,free,per
-604,True,0.7,per,stop
-604,True,0.7,per,txt
-604,True,0.7,free,stop
-604,True,0.7,stop,txt
-604,True,0.7,mobil,msg
+604,True,0.7,No Explanation
 605,False,0.0,No Explanation
-606,True,1.0,appli,comp,entri,get,win
-606,True,1.0,appli,comp,entri,free,get,ipod
-606,True,1.0,appli,comp,entri,get,ipod,std
+606,True,1.0,No Explanation
 607,False,0.0,No Explanation
 608,False,0.0,No Explanation
 609,False,0.0,No Explanation
-610,True,1.0,call,mobil,video
-610,True,1.0,call,min,mobil,ppm
+610,True,1.0,No Explanation
 611,False,0.0,No Explanation
 612,False,0.0,No Explanation
 613,False,0.0,No Explanation
-614,True,1.0,appli,call,claim,match,receiv
-614,True,1.0,appli,call,claim,code,match
-614,True,1.0,appli,call,claim,match,pleas
-614,True,1.0,appli,call,claim,match,rate
-614,True,1.0,appli,call,claim,match,voda
-614,True,1.0,call,claim,code,match,pleas
-614,True,1.0,call,claim,code,match,rate
-614,True,1.0,call,claim,code,match,receiv
-614,True,1.0,call,claim,code,match,voda
-614,True,1.0,call,claim,match,pleas,rate
-614,True,1.0,call,claim,match,pleas,voda
-614,True,1.0,call,claim,match,rate,receiv
+614,True,1.0,No Explanation
 615,False,0.0,No Explanation
 616,False,0.0,No Explanation
 617,False,0.1,No Explanation
-618,True,1.0,order,refer,servic
-618,True,1.0,gbp,order,refer,unsubscrib
+618,True,1.0,No Explanation
 619,False,0.0,No Explanation
-620,True,1.0,call,contact
-620,True,1.0,call,secret,think
-620,True,1.0,admir,call,secret
-620,True,1.0,call,reveal,secret
-620,True,1.0,call,secret,ur
-620,True,1.0,admir,call,think
-620,True,1.0,call,think,ur
-620,True,1.0,admir,call,ur
+620,True,1.0,No Explanation
 621,False,0.0,No Explanation
-622,True,1.0,attempt,call,mobil,urgent
-622,True,1.0,attempt,mobil,prize,urgent
-622,True,1.0,attempt,bonus,contact,mobil,urgent
+622,True,1.0,No Explanation
 623,False,0.0,No Explanation
 624,False,0.0,No Explanation
 625,False,0.1,No Explanation
@@ -965,17 +630,9 @@ Observation,Label,Prediction,Explanation
 628,False,0.0,No Explanation
 629,False,0.0,No Explanation
 630,False,0.1,No Explanation
-631,True,1.0,balanc,hg,maxim,wjhl
-631,True,1.0,balanc,cash,hg,wjhl
-631,True,1.0,balanc,hg,suit,wjhl
-631,True,1.0,balanc,cc,hg,row,wjhl
-631,True,1.0,balanc,hg,row,ur,wjhl
-631,True,1.0,balanc,hg,msg,ur,wjhl
+631,True,1.0,No Explanation
 632,False,0.0,No Explanation
-633,True,1.0,call
-633,True,1.0,new,voicemail
-633,True,1.0,new,pleas
-633,True,1.0,pleas,voicemail
+633,True,1.0,No Explanation
 634,False,0.0,No Explanation
 635,False,0.0,No Explanation
 636,False,0.0,No Explanation
@@ -986,21 +643,11 @@ Observation,Label,Prediction,Explanation
 641,False,0.0,No Explanation
 642,False,0.0,No Explanation
 643,False,0.1,No Explanation
-644,True,1.0,free,pobox,tone,uk,ur
+644,True,1.0,No Explanation
 645,False,0.0,No Explanation
-646,True,1.0,call,min,text
-646,True,1.0,call,min,stop
-646,True,1.0,call,min,nation,rate
-646,True,1.0,call,min,nation,sale
-646,True,1.0,call,min,rate,sale
-646,True,1.0,call,chat,male,min,nation
-647,True,0.9,www
-648,True,0.9,free,game,sport,www
-648,True,0.9,free,game,uk,www
-648,True,0.9,free,sport,uk,www
-648,True,0.9,appli,co,free,game,www
-648,True,0.9,co,free,game,term,www
-648,True,0.9,free,game,news,term,www
+646,True,1.0,No Explanation
+647,True,0.9,No Explanation
+648,True,0.9,No Explanation
 649,False,0.0,No Explanation
 650,False,0.0,No Explanation
 651,False,0.0,No Explanation
@@ -1022,11 +669,9 @@ Observation,Label,Prediction,Explanation
 667,False,0.0,No Explanation
 668,False,0.0,No Explanation
 669,False,0.0,No Explanation
-670,True,1.0,claim,mobil,offer,text,voucher
-670,True,1.0,claim,cs,mobil,offer,text,ur
+670,True,1.0,No Explanation
 671,False,0.1,No Explanation
-672,True,0.9,call,mobil,video
-672,True,0.9,call,free,repli,tri,video
+672,True,0.9,No Explanation
 673,False,0.0,No Explanation
 674,False,0.0,No Explanation
 675,False,0.0,No Explanation
@@ -1037,51 +682,24 @@ Observation,Label,Prediction,Explanation
 680,False,0.1,No Explanation
 681,False,0.0,No Explanation
 682,False,0.0,No Explanation
-683,True,0.9,call
-683,True,0.9,end,vodafon
-683,True,0.9,match,vodafon
-683,True,0.9,number,vodafon
-683,True,0.9,receiv,vodafon
-683,True,0.9,select,vodafon
-683,True,0.9,match,receiv,select
-683,True,0.9,end,match,number,receiv
+683,True,0.9,No Explanation
 684,False,0.0,No Explanation
 685,False,0.0,No Explanation
-686,True,1.0,club,uk,win
-686,True,1.0,club,info,ltd,uk
-686,True,1.0,book,club,ltd,uk,vip
-686,True,1.0,club,info,ltd,win
+686,True,1.0,No Explanation
 687,False,0.0,No Explanation
 688,False,0.0,No Explanation
 689,False,0.0,No Explanation
 690,False,0.0,No Explanation
 691,False,0.0,No Explanation
 692,False,0.0,No Explanation
-693,True,1.0,call,date,servic
-693,True,1.0,call,pobox,servic
-694,True,1.0,call,servic
-694,True,1.0,contact,find,servic
-694,True,1.0,contact,land,servic
-694,True,1.0,contact,date,line,servic
-694,True,1.0,contact,date,know,servic
-694,True,1.0,contact,know,line,servic
-694,True,1.0,contact,line,servic,someon
+693,True,1.0,No Explanation
+694,True,1.0,No Explanation
 695,False,0.0,No Explanation
-696,True,1.0,appli,claim,co,cs,holder,http,voucher
-696,True,1.0,cs,holder,http,pc,stop,voucher
-696,True,1.0,co,cs,holder,http,stop,txt,voucher
+696,True,1.0,No Explanation
 697,False,0.1,No Explanation
 698,False,0.1,No Explanation
-699,True,1.0,claim,txt
-699,True,1.0,claim,get,msg
-699,True,1.0,claim,get,subscrib
-699,True,1.0,bonus,claim,get
-699,True,1.0,claim,get,ok
-699,True,1.0,claim,msg,subscrib
-699,True,1.0,claim,msg,select
-699,True,1.0,bonus,claim,subscrib
-699,True,1.0,claim,ok,subscrib
-700,True,0.8,video
+699,True,1.0,No Explanation
+700,True,0.8,No Explanation
 701,False,0.1,No Explanation
 702,False,0.0,No Explanation
 703,False,0.0,No Explanation
@@ -1092,10 +710,7 @@ Observation,Label,Prediction,Explanation
 708,False,0.0,No Explanation
 709,False,0.0,No Explanation
 710,False,0.0,No Explanation
-711,True,1.0,call,free,mobil,nokia
-711,True,1.0,call,free,nokia,repli
-711,True,1.0,call,mobil,nokia,text
-711,True,1.0,call,colour,nokia,phone,text
+711,True,1.0,No Explanation
 712,False,0.0,No Explanation
 713,False,0.0,No Explanation
 714,False,0.1,No Explanation
@@ -1112,17 +727,12 @@ Observation,Label,Prediction,Explanation
 725,False,0.0,No Explanation
 726,False,0.0,No Explanation
 727,False,0.0,No Explanation
-728,True,0.8,co,free,mobil
-728,True,0.8,free,mobil,uk
-728,True,0.8,free,mobil,sex,ur
+728,True,0.8,No Explanation
 729,False,0.0,No Explanation
 730,False,0.0,No Explanation
 731,False,0.0,No Explanation
 732,False,0.0,No Explanation
-733,True,1.0,chat,msg
-733,True,1.0,hg,msg
-733,True,1.0,msg,wjhl
-733,True,1.0,ldn,msg,rcvd,suit
+733,True,1.0,No Explanation
 734,False,0.0,No Explanation
 735,False,0.0,No Explanation
 736,False,0.0,No Explanation
@@ -1132,45 +742,25 @@ Observation,Label,Prediction,Explanation
 740,False,0.0,No Explanation
 741,False,0.0,No Explanation
 742,False,0.0,No Explanation
-743,True,1.0,call,min,servic
-743,True,1.0,call,servic,stop
-743,True,1.0,call,servic,text
-743,True,1.0,call,chat,servic
-743,True,1.0,call,chat,stop
-743,True,1.0,call,min,stop
+743,True,1.0,No Explanation
 744,False,0.0,No Explanation
 745,False,0.0,No Explanation
 746,False,0.0,No Explanation
 747,False,0.0,No Explanation
-748,True,1.0,call,claim,contact,show
-748,True,1.0,call,claim,hrs,last,show
-748,True,1.0,call,claim,hrs,prize,show
-748,True,1.0,call,claim,last,prize,show
-748,True,1.0,call,claim,code,prize,show
-748,True,1.0,call,claim,guarante,hrs,ppm,show
+748,True,1.0,No Explanation
 749,False,0.0,No Explanation
 750,False,0.0,No Explanation
-751,True,1.0,box,call,cs,deliveri
-751,True,1.0,box,call,deliveri,landlin
+751,True,1.0,No Explanation
 752,False,0.0,No Explanation
 753,False,0.0,No Explanation
 754,False,0.0,No Explanation
 755,False,0.0,No Explanation
 756,False,0.0,No Explanation
-757,True,0.8,arsenal,dartboard
-757,True,0.8,dartboard,trebl
-757,True,0.8,condit,dartboard
-757,True,0.8,dartboard,sale
-757,True,0.8,arsenal,trebl
-758,True,1.0,attempt,call,caller,mobil,urgent
-758,True,1.0,attempt,call,caller,prize,urgent
-758,True,1.0,call,mobil,prize,urgent
-758,True,1.0,attempt,call,mobil,nd,urgent
+757,True,0.8,No Explanation
+758,True,1.0,No Explanation
 759,False,0.0,No Explanation
-760,True,0.8,claim
-760,True,0.8,call
-761,True,1.0,call,camera,claim,loyalti,orang
-761,True,1.0,call,claim,loyalti,orang,upgrad
+760,True,0.8,No Explanation
+761,True,1.0,No Explanation
 762,False,0.0,No Explanation
 763,False,0.0,No Explanation
 764,False,0.1,No Explanation
@@ -1187,16 +777,7 @@ Observation,Label,Prediction,Explanation
 775,False,0.0,No Explanation
 776,False,0.0,No Explanation
 777,False,0.0,No Explanation
-778,True,1.0,call,free,motorola,orang
-778,True,1.0,call,free,motorola,txts
-778,True,1.0,call,free,linerent,motorola
-778,True,1.0,call,nokia,orang
-778,True,1.0,call,doubl,motorola,nokia
-778,True,1.0,call,motorola,nokia,sonyericsson
-778,True,1.0,call,motorola,nokia,txts
-778,True,1.0,call,motorola,orang,sonyericsson
-778,True,1.0,call,motorola,orang,txts
-778,True,1.0,call,motorola,sonyericsson,txts
+778,True,1.0,No Explanation
 779,False,0.0,No Explanation
 780,False,0.0,No Explanation
 781,False,0.0,No Explanation
@@ -1205,8 +786,7 @@ Observation,Label,Prediction,Explanation
 784,False,0.0,No Explanation
 785,False,0.0,No Explanation
 786,False,0.0,No Explanation
-787,True,1.0,free,repli,servic,unsubscrib
-787,True,1.0,free,repli,sex,unsubscrib
+787,True,1.0,No Explanation
 788,False,0.0,No Explanation
 789,False,0.0,No Explanation
 790,False,0.0,No Explanation
@@ -1224,8 +804,7 @@ Observation,Label,Prediction,Explanation
 802,False,0.0,No Explanation
 803,False,0.0,No Explanation
 804,False,0.0,No Explanation
-805,True,1.0,call,collect,maxmin,pm
-805,True,1.0,call,collect,pm,pobox
+805,True,1.0,No Explanation
 806,False,0.0,No Explanation
 807,False,0.0,No Explanation
 808,False,0.0,No Explanation
@@ -1239,7 +818,7 @@ Observation,Label,Prediction,Explanation
 816,False,0.1,No Explanation
 817,False,0.0,No Explanation
 818,False,0.0,No Explanation
-819,True,1.0,cash,claim,go
+819,True,1.0,No Explanation
 820,False,0.0,No Explanation
 821,False,0.0,No Explanation
 822,False,0.1,No Explanation
@@ -1255,10 +834,7 @@ Observation,Label,Prediction,Explanation
 832,False,0.0,No Explanation
 833,False,0.0,No Explanation
 834,False,0.0,No Explanation
-835,True,1.0,call,claim,prize,show
-835,True,1.0,call,claim,hrs,show,urgent
-835,True,1.0,call,claim,guarante,show,urgent
-835,True,1.0,call,claim,contact,hrs,line,show
+835,True,1.0,No Explanation
 836,False,0.0,No Explanation
 837,False,0.0,No Explanation
 838,False,0.0,No Explanation
@@ -1272,13 +848,7 @@ Observation,Label,Prediction,Explanation
 846,False,0.0,No Explanation
 847,False,0.0,No Explanation
 848,False,0.0,No Explanation
-849,True,0.7,stop
-849,True,0.7,ac,send
-849,True,0.7,ac,sms
-849,True,0.7,ac,post
-849,True,0.7,send,sms
-849,True,0.7,post,sms
-849,True,0.7,sms,sun
+849,True,0.7,No Explanation
 850,False,0.0,No Explanation
 851,False,0.1,No Explanation
 852,False,0.0,No Explanation
@@ -1292,11 +862,7 @@ Observation,Label,Prediction,Explanation
 860,False,0.0,No Explanation
 861,False,0.0,No Explanation
 862,False,0.0,No Explanation
-863,True,0.9,cs,mobil,muz,pobox,ur
-863,True,0.9,claim,cs,mobil,muz,voucher
-863,True,0.9,claim,cs,discount,mobil,muz,pobox
-863,True,0.9,claim,cs,mobil,muz,pobox,text
-863,True,0.9,cs,mobil,muz,pobox,text,voucher
+863,True,0.9,No Explanation
 864,False,0.0,No Explanation
 865,False,0.0,No Explanation
 866,False,0.0,No Explanation
@@ -1305,26 +871,15 @@ Observation,Label,Prediction,Explanation
 869,False,0.0,No Explanation
 870,False,0.0,No Explanation
 871,False,0.0,No Explanation
-872,True,1.0,statement
-873,True,1.0,co,freeday,uk
-873,True,1.0,co,pocketbab,uk
-873,True,1.0,co,sauci,uk
-873,True,1.0,co,txt,uk
-873,True,1.0,freeday,pocketbab,uk
-873,True,1.0,freeday,sauci,uk
-873,True,1.0,freeday,txt,uk
-873,True,1.0,co,jordan,uk,wk
-874,True,1.0,call,claim,mobil
+872,True,1.0,No Explanation
+873,True,1.0,No Explanation
+874,True,1.0,No Explanation
 875,False,0.0,No Explanation
 876,False,0.0,No Explanation
 877,False,0.0,No Explanation
 878,False,0.0,No Explanation
 879,False,0.0,No Explanation
-880,True,1.0,stop,win
-880,True,1.0,repli,stdtxtrate,stop
-880,True,1.0,repli,txts,win
-880,True,1.0,repli,stdtxtrate,win
-880,True,1.0,repli,store,win
+880,True,1.0,No Explanation
 881,False,0.0,No Explanation
 882,False,0.0,No Explanation
 883,False,0.0,No Explanation
@@ -1333,17 +888,7 @@ Observation,Label,Prediction,Explanation
 886,False,0.0,No Explanation
 887,False,0.0,No Explanation
 888,False,0.0,No Explanation
-889,True,1.0,chanc,co,game,std,win
-889,True,1.0,chanc,co,game,term,win
-889,True,1.0,chanc,co,game,uk,win
-889,True,1.0,chanc,co,press,std,win
-889,True,1.0,chanc,co,press,term,win
-889,True,1.0,chanc,co,press,uk,win
-889,True,1.0,chanc,co,std,term,win
-889,True,1.0,chanc,co,std,uk,win
-889,True,1.0,chanc,co,term,uk,win
-889,True,1.0,arcad,chanc,co,uk,win
-889,True,1.0,chanc,co,see,uk,win
+889,True,1.0,No Explanation
 890,False,0.0,No Explanation
 891,False,0.0,No Explanation
 892,False,0.1,No Explanation
@@ -1362,21 +907,13 @@ Observation,Label,Prediction,Explanation
 905,False,0.0,No Explanation
 906,False,0.0,No Explanation
 907,False,0.0,No Explanation
-908,True,1.0,call,pobox,servic
-908,True,1.0,find,landlin,pobox,servic
-908,True,1.0,becausethey,contact,find,pobox,servic
-908,True,1.0,contact,find,pobox,servic,someon
+908,True,1.0,No Explanation
 909,False,0.0,No Explanation
 910,False,0.0,No Explanation
 911,False,0.0,No Explanation
 912,False,0.0,No Explanation
 913,False,0.0,No Explanation
-914,True,0.8,stop,text
-914,True,0.8,per,text
-914,True,0.8,phone,text
-914,True,0.8,text,ur
-914,True,0.8,free,hrs,text
-914,True,0.8,free,pic,text
+914,True,0.8,No Explanation
 915,False,0.0,No Explanation
 916,False,0.0,No Explanation
 917,False,0.0,No Explanation
@@ -1384,9 +921,7 @@ Observation,Label,Prediction,Explanation
 919,False,0.0,No Explanation
 920,False,0.0,No Explanation
 921,False,0.0,No Explanation
-922,True,0.9,mobil,month,repli,rington
-922,True,0.9,mobil,month,pleas,rington
-922,True,0.9,mobil,month,rington,uk
+922,True,0.9,No Explanation
 923,False,0.0,No Explanation
 924,False,0.0,No Explanation
 925,False,0.0,No Explanation
@@ -1398,33 +933,20 @@ Observation,Label,Prediction,Explanation
 931,False,0.0,No Explanation
 932,False,0.1,No Explanation
 933,False,0.0,No Explanation
-934,True,1.0,box,call
-934,True,1.0,box,ltd,min,po
-934,True,1.0,box,ltd,min,wb
-934,True,1.0,box,min,po,wb
+934,True,1.0,No Explanation
 935,False,0.0,No Explanation
-936,True,1.0,mobil,per,servic
-936,True,1.0,mobil,servic,stop
-936,True,1.0,mobil,servic,uk
+936,True,1.0,No Explanation
 937,False,0.0,No Explanation
 938,False,0.0,No Explanation
 939,False,0.1,No Explanation
 940,False,0.0,No Explanation
 941,False,0.0,No Explanation
-942,True,1.0,cost,textoper
-942,True,1.0,cost,txt
-942,True,1.0,cost,get
-942,True,1.0,cost,gga
-942,True,1.0,cost,text
-943,True,0.7,mobil,special
-943,True,0.7,mobil,servic
-943,True,0.7,mobil,welcom
-943,True,0.7,servic,special
+942,True,1.0,No Explanation
+943,True,0.7,No Explanation
 944,False,0.0,No Explanation
 945,False,0.0,No Explanation
 946,False,0.0,No Explanation
-947,True,0.9,collect,ppm
-947,True,0.9,call,collect,pobox
+947,True,0.9,No Explanation
 948,False,0.0,No Explanation
 949,False,0.0,No Explanation
 950,False,0.0,No Explanation
@@ -1435,18 +957,11 @@ Observation,Label,Prediction,Explanation
 955,False,0.0,No Explanation
 956,False,0.0,No Explanation
 957,False,0.0,No Explanation
-958,True,1.0,attempt,chat,contact
-958,True,1.0,chat,contact,invit
-958,True,1.0,chat,contact,wjhl
+958,True,1.0,No Explanation
 959,False,0.0,No Explanation
 960,False,0.0,No Explanation
 961,False,0.0,No Explanation
-962,True,1.0,call,calloptout,camera,video
-962,True,1.0,call,calloptout,line,video
-962,True,1.0,call,calloptout,rental,video
-962,True,1.0,call,camera,rental,video
-962,True,1.0,call,calloptout,min,txts,video
-962,True,1.0,call,calloptout,mths,ntwk,video
+962,True,1.0,No Explanation
 963,False,0.0,No Explanation
 964,False,0.0,No Explanation
 965,False,0.0,No Explanation
@@ -1461,21 +976,8 @@ Observation,Label,Prediction,Explanation
 974,False,0.0,No Explanation
 975,False,0.0,No Explanation
 976,False,0.0,No Explanation
-977,True,0.7,chat,fanci,freemsg
-977,True,0.7,chat,fanci,rcv
-977,True,0.7,chat,freemsg,rpli
-977,True,0.7,chat,freemsg,win
-977,True,0.7,rpli,win
-978,True,0.8,local,ltdhelpdesk,per,repli
-978,True,0.8,local,ltdhelpdesk,per,stop
-978,True,0.8,local,ltdhelpdesk,per,text
-978,True,0.8,local,ltdhelpdesk,msg,repli
-978,True,0.8,local,ltdhelpdesk,repli,stop
-978,True,0.8,local,ltdhelpdesk,repli,text
-978,True,0.8,end,local,ltdhelpdesk,stop
-978,True,0.8,horni,local,ltdhelpdesk,stop
-978,True,0.8,local,ltdhelpdesk,msg,stop
-978,True,0.8,local,ltdhelpdesk,stop,text
+977,True,0.7,No Explanation
+978,True,0.8,No Explanation
 979,False,0.0,No Explanation
 980,False,0.0,No Explanation
 981,False,0.0,No Explanation
@@ -1494,9 +996,6 @@ Observation,Label,Prediction,Explanation
 994,False,0.0,No Explanation
 995,False,0.0,No Explanation
 996,False,0.0,No Explanation
-997,True,1.0,camera,free,latest,mobil,video
-997,True,1.0,camera,free,latest,opt,video
-997,True,1.0,camera,free,latest,mobil,orang,text
-997,True,1.0,camera,free,latest,mobil,orang,yes
+997,True,1.0,No Explanation
 998,False,0.0,No Explanation
 999,False,0.0,No Explanation

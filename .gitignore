@@ -107,3 +107,6 @@ venv.bak/
 
 # other files
 .DS_Store
+Data/clean_data.pickle
+weights.png
+Data/clean_data.pickle
