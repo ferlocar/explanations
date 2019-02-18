@@ -30,7 +30,7 @@ Get explanations.
             obs = obs.flatten()
             threshold = thresholds[obs_i]
             obs = obs.reshape(1, -1)
-            score = self.score_f(obs)[0, 1] - threshold
+            score = self.score_f(obs)[0] - threshold
             # Get class of the observation
             class_val = 1 if score >= 0 else -1
             # Get relevant features to apply operators
@@ -73,7 +73,7 @@ Get explanations.
                         def_value_tiles = np.tile(self.def_values[relevant_f], (new_combs.shape[0], 1))
                         new_obs[:, relevant_f] = np.multiply(1 - new_combs, new_obs[:, relevant_f]) \
                                                  + np.multiply(new_combs, def_value_tiles)
-                        new_scores = (self.score_f(new_obs) - threshold)[:, 1] * class_val
+                        new_scores = (self.score_f(new_obs) - threshold) * class_val
                         for j, new_score in enumerate(new_scores):
                             ix = bisect.bisect(scores, new_score)
                             scores.insert(ix, new_score)
@@ -93,7 +93,7 @@ Get explanations.
         combinations = sorted(combinations, key=lambda x: bin(x).count("1"), reverse=True)
         t_obs = np.matrix(obs, copy=True)
         i = 0
-        score = self.score_f(obs)[0, 1] - threshold
+        score = self.score_f(obs)[0] - threshold
         class_val = 1 if score >= 0 else -1
         bits = 1 << np.arange(explanation.sum())
         while i < n:
@@ -102,7 +102,7 @@ Get explanations.
             e_bits = ((c & bits) > 0).astype(int)
             t_obs[:, relevant_f] = np.multiply(1 - e_bits, obs[:, relevant_f]) \
                                    + np.multiply(e_bits, self.def_values[relevant_f])
-            score = (self.score_f(t_obs) - threshold)[0, 1] * class_val
+            score = (self.score_f(t_obs) - threshold)[0] * class_val
             if score < 0:
                 # We have a shorter explanation
                 explanation = np.in1d(active_f, relevant_f[e_bits == 1])
