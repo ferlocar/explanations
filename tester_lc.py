@@ -88,20 +88,10 @@ def main():
     _, y_train, _, y_test = pickle.load(open("./Data/LC_data.pickle", "rb"))
     # def_values: explainer changes current feature to default values
     def_values = pickle.load(open("./Data/def_values.pickle", "rb"))
-    # f_names: feature names, used for output
-    feature_types = pickle.load(open("./Data/feature_types.pickle", "rb"))
-    # # save type of features
-    feature_types = np.array(feature_types)
-    # # save name of features
-    features = pickle.load(open("./Data/features.pickle", "rb"))
-    # # save category name for disrete values
-    discrete_values = pickle.load(open("./Data/discrete_values.pickle", "rb"))
     # save grade for each instance in test set
     grades_test = pickle.load(open("./Data/grades_test.pickle", "rb"))
     # # save interest rate for each instance in test set
     int_rates_test = pickle.load(open("./Data/int_rates_test.pickle", "rb"))
-    # # set for grade that has A
-    # A_set = (grades_test == 'A')
     # save an array of mins of continuous features; used for transform the scaled continuous features back
     test_mins = pickle.load(open("./Data/test_mins.pickle", "rb"))
     # save an array of maxs of continuous features; used for transform the scaled continuous features back
@@ -114,54 +104,6 @@ def main():
     X_train = pickle.load(open("./Data/X_train_no_mode.pickle", "rb"))
     X_test = pickle.load(open("./Data/X_test_no_mode.pickle", "rb"))
 
-    # # Update feature names
-    # f_names = []
-    # f_ix = 0
-    # for f in features:
-    #     f_type = feature_types[f_ix]
-    #     if f_type == -1:
-    #         f_names.append(f)
-    #         f_ix += 1
-    #     else:
-    #         f_values = discrete_values[f_type]
-    #         for f_value in f_values:
-    #             f_names.append(f + "::" + f_value)
-    #             f_ix += 1
-    # features = f_names
-    # print(features)
-    # # sys.exit()
-    # features = np.array(features)
-    # # Prepare data
-    # modes = []
-    # for f_type in np.unique(feature_types):
-    #     if f_type != -1:
-    #         dummy_ixs = np.where(feature_types == f_type)[0]
-    #         print('dummy ixs', dummy_ixs)
-    #         # sys.exit()
-    #         mode_ix = X_train[:, dummy_ixs].mean(axis=0).argsort()[-1]+dummy_ixs[0]
-    #         print(mode_ix)
-    #         X_train = np.delete(X_train, mode_ix, 1)
-    #         X_test = np.delete(X_test, mode_ix, 1)
-    #         modes.append(features[mode_ix])
-    #         features = np.delete(features, mode_ix)
-    #         feature_types = np.delete(feature_types, mode_ix)
-    # # Save feature_types modes
-    # print(modes)
-    # pickle.dump(modes, open("./Data/modes.pickle", "wb"))
-    # # Save New X_train, X_test
-    # pickle.dump(X_train, open("./Data/X_train_no_mode.pickle", "wb"))
-    # pickle.dump(X_test, open("./Data/X_test_no_mode.pickle", "wb"))
-    # print('X_train shape', X_train.shape)
-    # print('features shape', features.shape)
-
-    # # sys.exit()
-    # #remove mode in X and X
-    # #Default values
-    # def_values = np.empty(X_train.shape[1])
-    # cont_ixs = np.where(feature_types == -1)[0]
-    # def_values[cont_ixs] = X_train[:, cont_ixs].mean(axis=0)
-    # disc_ixs = np.where(feature_types != -1)[0]
-    # def_values[disc_ixs] = stats.mode(X_train[:, disc_ixs], axis=0)[0]
     try:
         model = pickle.load(open(model_file, "rb"))
     except IOError:
@@ -191,7 +133,6 @@ def main():
         return model.predict_proba(df)[:, 1]
 
     scoring_function = expected_int if args_exp else get_prob
-    # pickle.dump(def_values, open('./Data/def_values.pickle', "wb"))
 
     explainer = Explainer(scoring_function, def_values)
     max_ite = 20
@@ -203,12 +144,9 @@ def main():
         scores = scoring_function(data)
     else:
         scores = model.predict_proba(data)[:, 1]
-    # pickle.dump(features,open('./Data/f_names.pickle', 'wb') )
-    # print(features.shape)
-    # print(def_values.shape)
-    # sys.exit()
+
     print('Explain threshold:', threshold)
-    # sys.exit()
+
     export_explanations(explanations, labels, scores, f_names, def_values, data, threshold, 'w',
                         export_f_name, test_mins, test_maxs, grades_test, scoring_function)
     # explore different thresholds
