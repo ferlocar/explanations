@@ -110,3 +110,7 @@ venv.bak/
 Data/clean_data.pickle
 weights.png
 Data/clean_data.pickle
+Data
+files
+images/*
+!images/.gitkeep 
