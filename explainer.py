@@ -13,6 +13,8 @@ class Explainer(object):
         # Set default values
         self.def_values = default_values
         if issparse(self.def_values):
+            self.def_values = np.array(self.def_values.todense()).flatten()
+        self.def_values
 
     def explain(self, data, thresholds=0.5, max_ite=20, stop_at_first=False, cost_func=None):
         """
