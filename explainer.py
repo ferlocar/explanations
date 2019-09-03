@@ -1,6 +1,6 @@
 import numpy as np
 import bisect
-
+from scipy.sparse import issparse
 
 class Explainer(object):
     def __init__(self, score_f, default_values, prune=True, omit_default=True):
@@ -12,8 +12,9 @@ class Explainer(object):
         self.omit_default = omit_default
         # Set default values
         self.def_values = default_values
+        if issparse(self.def_values):
 
-    def explain(self, data, thresholds=0.5, max_ite=20):
+    def explain(self, data, thresholds=0.5, max_ite=20, stop_at_first=False, cost_func=None):
         """
 Get explanations.
         :param data: Data
@@ -26,11 +27,16 @@ Get explanations.
         """
         all_explanations = []
         thresholds = np.full(data.shape[0], thresholds) if type(thresholds) == float else thresholds
+        if cost_func is None:
+            cost_func = self.default_cost_func
         for obs_i, obs in enumerate(data):
+            if issparse(obs):
+                obs = np.array(obs.todense())
             obs = obs.flatten()
             threshold = thresholds[obs_i]
             obs = obs.reshape(1, -1)
-            score = self.score_f(obs)[0] - threshold
+            original_pred = self.score_f(obs)[0]
+            score = original_pred - threshold
             # Get class of the observation
             class_val = 1 if score >= 0 else -1
             # Get relevant features to apply operators
@@ -43,13 +49,15 @@ Get explanations.
                 combs = [np.full(relevant_f.size, False, dtype=bool)]
                 # Set list of scores
                 scores = [score * class_val]
+                sorting_scores = [0]
                 for i in range(max_ite):
                     # Check if there are any more explanations
-                    if not combs:
+                    if (not combs) or (stop_at_first and len(e_list)):
                         break
                     # Get next combination with the smallest score
                     comb = combs.pop(0)
                     score = scores.pop(0)
+                    sorting_scores = sorting_scores[1:]
                     # Add to list of explanations if the class changed
                     if score < 0:
                         if self.prune:
@@ -73,10 +81,14 @@ Get explanations.
                         def_value_tiles = np.tile(self.def_values[relevant_f], (new_combs.shape[0], 1))
                         new_obs[:, relevant_f] = np.multiply(1 - new_combs, new_obs[:, relevant_f]) \
                                                  + np.multiply(new_combs, def_value_tiles)
-                        new_scores = (self.score_f(new_obs) - threshold) * class_val
-                        for j, new_score in enumerate(new_scores):
-                            ix = bisect.bisect(scores, new_score)
-                            scores.insert(ix, new_score)
+                        new_preds = self.score_f(new_obs)
+                        costs = cost_func(obs, new_obs)
+                        new_sorting_scores = class_val * (new_preds - original_pred) / costs
+                        new_scores = class_val * (new_preds - threshold) 
+                        for j, new_sorting_score in enumerate(new_sorting_scores):
+                            ix = bisect.bisect(sorting_scores, new_sorting_score)
+                            sorting_scores.insert(ix, new_sorting_score)
+                            scores.insert(ix, new_scores[j])
                             combs.insert(ix, new_combs[j, :])
             all_explanations.append(e_list)
         return all_explanations
@@ -112,3 +124,6 @@ Get explanations.
                 n = len(combinations)
             i += 1
         return explanation
+
+    def default_cost_func(self, original_obs, new_obs):
+        return 1
