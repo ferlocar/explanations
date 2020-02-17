@@ -4,13 +4,16 @@ from scipy.sparse import issparse
 
 class Explainer(object):
     def __init__(self, score_f, default_values, prune=True, omit_default=True):
-        # Scoring function of the model we want to explain
+        """
+        Build explainer.
+        :param score_f: function, scoring function of the model we want to explain
+        :param default_values: array-like, we'll replace missing values with imputation. There are the values to be imputed.
+        :param prune: bool, whether to ensure that explanations are irreducible.
+        :param omit_default: bool, whether to skip explanations from 'default decision' instances.
+        """
         self.score_f = score_f
-        # Whether we want to make sure that explanations are irreducible
         self.prune = prune
-        # Whether we want to omit explanations from default decisions
         self.omit_default = omit_default
-        # Set default values
         self.def_values = default_values
         if issparse(self.def_values):
             self.def_values = np.array(self.def_values.todense()).flatten()
@@ -18,17 +21,19 @@ class Explainer(object):
 
     def explain(self, data, thresholds=0.5, max_ite=20, stop_at_first=False, cost_func=None):
         """
-Get explanations.
+        Get explanations.
         :param data: Data
-        :param max_ite: integer, number of iterations to get explanations
-        :param thresholds: integer or array, decision threshold
-        :return:    Element 1: List of explanations. Each element is a list that contains the explanations for the
-        observation in the ith position. Each explanation is a list that contains the indices of the features present
+        :param thresholds: integer or array (with same number of rows as Data), decision threshold
+        :param max_ite: integer, max number of iterations (per instance)
+        :param stop_at_first: bool, whether to stop after finding the first explanation for each instance
+        :param cost_func: function, it defines the cost of changing the original instance values to the new instance values 
+        :return: List of explanations. Each element is a list that contains the explanations for the observation in the ith position. 
+        Each explanation is a list that contains the indices of the features present
         in the explanation.
-                    Element 2: Default values. List of default values for each feature.
         """
         all_explanations = []
-        thresholds = np.full(data.shape[0], thresholds) if type(thresholds) == float else thresholds
+        if not hasattr(thresholds, "__len__"):
+            thresholds = np.full(data.shape[0], thresholds)
         if cost_func is None:
             cost_func = self.default_cost_func
         for obs_i, obs in enumerate(data):
