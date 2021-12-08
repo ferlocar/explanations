@@ -39,3 +39,9 @@ explanations = explain.explain(X, decision_boundary)
 # Note observations with default decisions will have empty arrays
 explanations
 ```
+
+For more information about counterfactual explanations, take look at these papers:
+
+Fernández, Carlos, Foster Provost, and Xintian Han. "Explaining Data-Driven Decisions made by AI Systems: The Counterfactual Approach." arXiv preprint arXiv:2001.07417 (2020). Link: https://arxiv.org/abs/2001.07417
+
+Martens, David, and Foster Provost. "Explaining data-driven document classifications." Mis Quarterly 38.1 (2014): 73-100. 
