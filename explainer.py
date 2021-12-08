@@ -46,8 +46,13 @@ class Explainer(object):
             score = original_pred - threshold
             # Get class of the observation
             class_val = 1 if score >= 0 else -1
+            # Get default values
+            if  len(self.def_values.shape) == 1:
+                default_values = self.def_values
+            else:
+                default_values = self.def_values[obs_i]
             # Get relevant features to apply operators
-            relevant_f = np.where(obs.flatten() != self.def_values)[0]
+            relevant_f = np.where(obs.flatten() != default_values)[0]
             # Set lists of explanations
             explanations = np.zeros((0, relevant_f.size))
             e_list = []
@@ -68,7 +73,7 @@ class Explainer(object):
                     # Add to list of explanations if the class changed
                     if score < 0:
                         if self.prune:
-                            comb = self.prune_explanation(obs, comb, relevant_f, threshold)
+                            comb = self.prune_explanation(obs, comb, relevant_f, threshold, default_values)
                         explanations = np.vstack((explanations, comb))
                         e_list.append(relevant_f[comb == 1].tolist())
                     else:
@@ -85,7 +90,7 @@ class Explainer(object):
                             continue
                         # Predict scores for new combs and add them to list
                         new_obs = np.tile(obs, (new_combs.shape[0], 1))
-                        def_value_tiles = np.tile(self.def_values[relevant_f], (new_combs.shape[0], 1))
+                        def_value_tiles = np.tile(default_values[relevant_f], (new_combs.shape[0], 1))
                         new_obs[:, relevant_f] = np.multiply(1 - new_combs, new_obs[:, relevant_f]) \
                                                  + np.multiply(new_combs, def_value_tiles)
                         new_preds = self.score_f(new_obs)
@@ -100,7 +105,7 @@ class Explainer(object):
             all_explanations.append(e_list)
         return all_explanations
 
-    def prune_explanation(self, obs, explanation, active_f, threshold):
+    def prune_explanation(self, obs, explanation, active_f, threshold, default_values):
         relevant_f = active_f[explanation]
         # Get number of explanation subsets (excluding all variables and no variables)
         n = 2 ** explanation.sum()
@@ -120,7 +125,7 @@ class Explainer(object):
             # Set features according to combination and predict
             e_bits = ((c & bits) > 0).astype(int)
             t_obs[:, relevant_f] = np.multiply(1 - e_bits, obs[:, relevant_f]) \
-                                   + np.multiply(e_bits, self.def_values[relevant_f])
+                                   + np.multiply(e_bits, default_values[relevant_f])
             score = (self.score_f(t_obs) - threshold)[0] * class_val
             if score < 0:
                 # We have a shorter explanation
